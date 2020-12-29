@@ -22,7 +22,6 @@
     <title>Hello, world!</title>
   </head>
   <body>
-      
       <div class="container">
         <div class="row">
           <div id="rightContent" class="col ">
@@ -46,7 +45,6 @@
             </form>
           </div>
         </div>
-        
       </div>
 
     <!-- Optional JavaScript -->
