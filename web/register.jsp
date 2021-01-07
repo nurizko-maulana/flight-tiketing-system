@@ -33,29 +33,25 @@
             <div class="text-center">
               <img class="w-50 " src="img/logo.png" alt="logo">
             </div>
-              <form action="regServ" method="post">
+              <form action="regServlet" method="post">
               <div class="form-group">
                 <label class="text-left">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter Username" required>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
               </div>
               <div class="form-group">
                 <label class="text-left">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
               </div>
               <div class="form-group">
                 <label class="text-left">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" required>
-              </div>
-                <div class="form-group">
-                <label class="text-left">Retype Password</label>
-                <input type="password" class="form-control" id="retypepassword" placeholder="Retype password" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
               </div>
               <div class="form-group">
                      <label class="text-left">User Role</label><br>
                 <select class="form-control" name="userType">
-                    <option selected>Customer</option>
-                    <option>Admin</option>
-                    <option>Manager</option>
+                    <option selected value="1">Customer</option>
+                    <option value="2">Admin</option>
+                    <option value="3">Manager</option>
                 </select>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Submit</button>
