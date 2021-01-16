@@ -55,7 +55,9 @@
                     <div class="card " style="max-width:400px">
                         <img class="card-img-top" src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" alt="Card image">
                         <div class="card-body">
-                            <h4 class="card-title">John Doe</h4>
+                            <form >
+                                <div class="form-group">
+                            </form>
                             <p class="card-text">Email: example@email.com</p>
                             <p class="card-text">ID No:</p>
                             <p class="card-text">Email: example@email.com</p>
