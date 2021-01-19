@@ -3,9 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/controller/regServlet.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/bean/User.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/register.jsp</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/simple-sidebar.css</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/META-INF/context.xml</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/src/java/user/regServlet.java</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/src/java/user/registerDAO.java</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/flightSchedule.jsp</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/login.jsp</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/bookingDetail.jsp</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/index.html</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/profile.jsp</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/src/java/bean/User.java</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/register.jsp</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/adminPlaneList.jsp</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/adminPlaneForm.jsp</file>
+            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/seatList_admin.jsp</file>
         </group>
     </open-files>
 </project-private>
