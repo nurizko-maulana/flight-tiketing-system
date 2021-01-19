@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="simple-sidebar.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Profile</title>
+        <title>Edit Profile</title>
     </head>
 
 
@@ -49,20 +49,27 @@
                         </div>
                     </div>
                     <div class="w-auto h-100 pt-5"> 
-                        <h1>Profile Page</h1>
+                        <h1>Edit Profile Page</h1>
                     </div>
-                    <div class="row justify-content-center">
-                    <div class="card " style="max-width:400px">
-                        <img class="card-img-top" src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">John Doe</h4>
-                            <p class="card-text">Email: example@email.com</p>
-                            <p class="card-text">ID No:</p>
-                            <p class="card-text">Email: example@email.com</p>
-                            <a href="editProfile.jsp" class="btn btn-primary">Edit</a>
+                    <div class="row justify-content-center pt-5">
+                        <div class="card  " style="max-width:400px">
+
+                            <div class="card-body">
+                                <form >
+                                    <div class="form-group">
+                                        <label for="username">Username: </label>
+                                        <input type="text" class="form-control" id="username" placeholder="John Doe">
+                                        <label for="email">E-Mail Address: </label>
+                                        <input type="email" class="form-control" id="email" placeholder="example@email.com">
+                                        <label for="password">Password: </label>
+                                        <input type="password" class="form-control" id="password">
+                                    </div>
+                                </form>
+
+                                <a href="#" class="btn btn-primary" type="submit">Submit</a>
+                            </div>
                         </div>
                     </div>
-                        </div>
 
 
                 </div>
