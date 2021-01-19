@@ -32,14 +32,14 @@
             <div class="text-center">
               <img class="w-50 " src="img/logo.png" alt="logo">
             </div>
-            <form>
+            <form action="login" method="post">
               <div class="form-group">
                 <label class="text-left" for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
               </div>
               <div class="form-group">
                 <label class="text-left" for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="password" placeholder="Password">
               </div>
               <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
