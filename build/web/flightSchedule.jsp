@@ -43,11 +43,13 @@
   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     USER
   </button>
+      
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="#">Logout</a>
   </div>
 </div>
 <!--Table-->
+<form action="booking.jsp" method="post"> 
 <table id="tablePreview" class="table">
 <!--Table head-->
   <thead>
@@ -68,9 +70,11 @@
       <th scope="row">1</th>
       <td>MQ2213</td>
       <td>Dhaka - Kuala Lumpur</td>
-      <td>22.50</td>
-      <td>0535</td>
+      <td>2250hrs</td>
+      <td>0535hrs</td>
       <td>RM 1500</td>
+      <td><input type="submit" name="book" value="Book"</button>
+      </td>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -79,6 +83,7 @@
       <td>18.20</td>
       <td>2235</td>
       <td>RM 125</td>
+      <td><input type="submit" name="book" value="Book"</button>
     </tr>
     <tr>
       <th scope="row">3</th>
@@ -87,6 +92,7 @@
       <td>03.25</td>
       <td>03.25</td>
       <td>RM 175</td>
+      <td><input type="submit" name="book" value="Book"</button>
     </tr>
   </tbody>
   <!--Table body-->
