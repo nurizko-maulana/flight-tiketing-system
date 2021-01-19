@@ -1,5 +1,5 @@
 <%-- 
-    Document   : seatUpdate_admin
+    Document   : features-form
     Created on : Jan 4, 2021, 6:40:40 PM
     Author     : thattshini
 --%>
@@ -36,37 +36,42 @@
      <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container-fluid">
-          <br><br><br>
-          <a href="features-form.jsp" class="btn btn-primary">Add Seat</a> 
-<br><br>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Seat Class</th>
-      <th scope="col">Seat Width</th>
-      <th scope="col">Seat Type</th>
-      <th scope="col">Video Type</th>
-      <th scope="col">Power Type</th>
-      <th scope="col">Wifi</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-     <c:forEach items="${list}" var="features" varStatus="loop">
-    <tr>
-      <td><c:out value="${features.id}" /></td> 
-      <td><c:out value="${features.seatCat}" /></td> 
-      <td><c:out value="${features.seatWidth}" /></td>
-      <td><c:out value="${features.seatType}" /></td>
-      <td><c:out value="${features.videoType}" /></td>
-      <td><c:out value="${features.powerType}" /></td>
-      <td><c:out value="${features.wifi}" /></td>
-      <td> <a href="featuresServlet?action=EDIT&id=${features.id}" class="btn btn-warning">Edit</a>  <a href="featuresServlet?action=DELETE&id=${features.id}" class="btn btn-danger">Delete</a> </td>
-    </tr>
-     </c:forEach>
-  </tbody>
-</table>
+         
+              <br><br>
+               <h2>Add New Feature</h2>
+               <br>
+<div class="card">
+    <div class="card-body">
+        
+        <form action="featuresServlet?action=ADD" method="post">
+  <div class="form-group">
+    <label >Seat Category</label>
+    <input type="text" class="form-control" name="seatCat">
+  </div>
+  <div class="form-group">
+    <label >Seat Width</label>
+    <input type="text" class="form-control" name="seatWidth">
+  </div>
+  <div class="form-group">
+    <label >Seat Type</label>
+    <input type="text" class="form-control" name="seatType">
+  </div>
+    <div class="form-group">
+    <label >Video Type</label>
+    <input type="text" class="form-control" name="videoType">
+  </div>
+    <div class="form-group">
+    <label >Power Type</label>
+    <input type="text" class="form-control" name="powerType">
+  </div>
+    <div class="form-group">
+    <label>Wifi</label>
+    <input type="text" class="form-control" name="wifi">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+            </div>
+         </div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->

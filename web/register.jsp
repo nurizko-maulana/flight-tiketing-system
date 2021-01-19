@@ -15,8 +15,34 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-      #rightContent{
+      #leftContent{
         background-color: #F5F5F5;
+       
+        background-repeat: no-repeat;
+        width: 50%;
+        position: absolute;
+        left: 0px;
+        height: 100%;
+      }
+      #rightHalf {
+
+        width: 50%;
+        position: absolute;
+        right: 0px;
+        height: 100%;
+        float:right;
+      }
+      
+       #rightHalf2 {
+
+        width: 50%;
+        position: absolute;
+        right: 0px;
+        align-content: center;
+        height: 100%;
+        float:right;
+        padding-top: 100px;
+        padding-left: 70px;
       }
     </style>
         <title>Registration</title>
@@ -25,15 +51,16 @@
     <body>
        <div class="container">
         <div class="row">
-          <div id="rightContent" class="col" >
+          <div id="leftContent" class="col" >
             <img class="w-100" src="img/TagLine.png" alt="plane">
           </div>
 
-          <div class="col p-5 border-left">
-            <div class="text-center">
+          <div class="col p-5 ">
+            <div class="text-center" id="rightHalf">
               <img class="w-50 " src="img/logo.png" alt="logo">
             </div>
-              <form action="regServlet" method="post">
+              <div class="col p-5 " >
+              <form action="regServlet" method="post" id="rightHalf2">
               <div class="form-group">
                 <label class="text-left">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
@@ -56,6 +83,7 @@
               </div>
               <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
+          </div>
           </div>
         </div>
       </div>
