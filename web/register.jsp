@@ -81,7 +81,8 @@
                     <option value="3">Manager</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+              <button type="submit" class="btn btn-primary btn-block mb-3">Submit</button>
+              <p class="d-inline-block">Already have an account?</p> <a class="text-center d-inline-block" href="login.jsp">Login !</a>
             </form>
           </div>
           </div>
