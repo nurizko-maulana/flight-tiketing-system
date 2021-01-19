@@ -100,7 +100,7 @@ public final class Manage_0020Schedule_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                <td>8H 20M </td>\n");
       out.write("                                <td>\n");
       out.write("                                    <button type=\"button\" class=\"btn btn-success\">Edit</button>\n");
-      out.write("                                    <button type=\"button\" class=\"btn btn-danger\">Edit</button>\n");
+      out.write("                                    <button type=\"button\" class=\"btn btn-danger\">Delete</button>\n");
       out.write("                                </td>\n");
       out.write("                            </tr>\n");
       out.write("                            <tr>\n");
@@ -110,6 +110,10 @@ public final class Manage_0020Schedule_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                <td>1320</td>\n");
       out.write("                                <td>1630</td>\n");
       out.write("                                <td>3H 15M </td>\n");
+      out.write("                                <td>\n");
+      out.write("                                    <button type=\"button\" class=\"btn btn-success\">Edit</button>\n");
+      out.write("                                    <button type=\"button\" class=\"btn btn-danger\">Delete</button>\n");
+      out.write("                                </td>\n");
       out.write("                            </tr>\n");
       out.write("                            <tr>\n");
       out.write("                                <th scope=\"row\">EK486</th>\n");
@@ -118,6 +122,10 @@ public final class Manage_0020Schedule_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                <td>1720</td>\n");
       out.write("                                <td>0930</td>\n");
       out.write("                                <td>9H 20M </td>\n");
+      out.write("                                <td>\n");
+      out.write("                                    <button type=\"button\" class=\"btn btn-success\">Edit</button>\n");
+      out.write("                                    <button type=\"button\" class=\"btn btn-danger\">Delete</button>\n");
+      out.write("                                </td>\n");
       out.write("                            </tr>\n");
       out.write("\n");
       out.write("                        </tbody>\n");

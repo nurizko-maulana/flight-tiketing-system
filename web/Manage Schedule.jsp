@@ -38,6 +38,7 @@
             <div class="bg-secondary" id="page-content-wrapper">
                 <div class="container-fluid">
                     <br><br><br>
+                    <a href="AddFlight.jsp"><button type="button" class="btn btn-success">Add Flight</button></a><br><br>
                     <table class=" bg-light table table-bordered">
                         <thead>
                             <tr>
