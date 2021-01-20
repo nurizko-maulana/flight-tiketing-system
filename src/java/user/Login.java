@@ -46,15 +46,17 @@ public class Login extends HttpServlet {
             try {
                 
                 if(Validate.checkUser(username, password)){
-                    
+                    out.print("<script> alert('Login Succesfully/');<script/>");
                     HttpSession session=request.getSession();
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
                     
                                        
                     session.setAttribute("name",username);
                 }
                 else{
-                    out.print("Sorry, username or password error!");
-                    request.getRequestDispatcher("login.html").include(request, response);  
+                    out.print("<script> alert(\"Sorry, username or password not found!\");<script/>");
+                    request.getRequestDispatcher("flightSchedule.jsp").forward(request, response);
+                    
                 }   
             
             
