@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,8 +25,9 @@
       <div class="list-group list-group-flush">
     
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-primary active">Seat List</a>
+        <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Seat Feature</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Seat Updates</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
      
       </div>
     </div>
@@ -34,29 +37,34 @@
     <div id="page-content-wrapper">
       <div class="container-fluid">
           <br><br><br>
+          <a href="features-form.jsp" class="btn btn-primary">Add Seat</a> 
+<br><br>
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">No</th>
-      <th scope="col">Features</th>
-      <th scope="col">Economy</th>
-      <th scope="col">Business</th>
+      <th scope="col">ID</th>
+      <th scope="col">Seat Class</th>
+      <th scope="col">Seat Width</th>
+      <th scope="col">Seat Type</th>
+      <th scope="col">Video Type</th>
+      <th scope="col">Power Type</th>
+      <th scope="col">Wifi</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
+     <c:forEach items="${list}" var="features" varStatus="loop">
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td><c:out value="${features.id}" /></td> 
+      <td><c:out value="${features.seatCat}" /></td> 
+      <td><c:out value="${features.seatWidth}" /></td>
+      <td><c:out value="${features.seatType}" /></td>
+      <td><c:out value="${features.videoType}" /></td>
+      <td><c:out value="${features.powerType}" /></td>
+      <td><c:out value="${features.wifi}" /></td>
+      <td> <a href="featuresServlet?action=EDIT&id=${features.id}" class="btn btn-warning">Edit</a>  <a href="featuresServlet?action=DELETE&id=${features.id}" class="btn btn-danger">Delete</a> </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    
+     </c:forEach>
   </tbody>
 </table>
       </div>
