@@ -26,11 +26,9 @@
                 <div class="sidebar-heading"><img src="img/logo.png" width="200" height="100" alt=""></div>
                 <div class="list-group list-group-flush">
 
-                   <a href="#" class="list-group-item list-group-item-action bg-light ">Profile</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light ">Seat List</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Seat Updates</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Schedule</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Seat Price</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                   <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Plane</a>
+                   <a href="#" class="list-group-item list-group-item-action bg-light">Statistic</a>
                     <a href="#" class="list-group-item list-group-item-action bg-primary active">Users</a>
 
 
@@ -59,7 +57,7 @@
                         <div class="card  " style="max-width:400px">
 
                             <div class="card-body">
-                                <form >
+                                <form>
                                     <div class="form-group">
                                         <label for="username">Username: </label>
                                         <input type="text" class="form-control" id="username" placeholder="John Doe">

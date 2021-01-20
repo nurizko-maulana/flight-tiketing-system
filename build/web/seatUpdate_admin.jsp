@@ -23,8 +23,9 @@
       <div class="list-group list-group-flush">
     
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Seat List</a>
+        <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Seat Feature</a>
         <a href="#" class="list-group-item list-group-item-action bg-primary active">Seat Updates</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
      
       </div>
     </div>
@@ -41,6 +42,7 @@
       <th scope="col">Features</th>
       <th scope="col">Economy</th>
       <th scope="col">Business</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -49,12 +51,14 @@
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
+      <td> <a href="#" class="btn btn-warning">Approve</a>  <a href="#" class="btn btn-danger">Disapprove</a> </td>
     </tr>
     <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
+      <td> <a href="#" class="btn btn-warning">Approve</a>  <a href="#" class="btn btn-danger">Disapprove</a> </td>
     </tr>
     
   </tbody>

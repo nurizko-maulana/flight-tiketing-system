@@ -1,7 +1,7 @@
 <%-- 
-    Document   : seatUpdate_admin
-    Created on : Jan 4, 2021, 6:40:40 PM
-    Author     : thattshini
+    Document   : adminPlaneAdd
+    Created on : 20-Jan-2021, 02:42:11
+    Author     : duncanleo
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,9 +13,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="simple-sidebar.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>JSP Page</title>
+        <title>Add Plane</title>
     </head>
     <body>
+           <%  request.getAttribute("features"); %>
        <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
@@ -25,9 +26,9 @@
       <div class="list-group list-group-flush">
     
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Seat Feature</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Seat Updates</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
+        <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Plane</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Statistic</a>
+        <a href="login.jsp" class="list-group-item list-group-item-action bg-light">Logout</a>
      
       </div>
     </div>
@@ -36,37 +37,32 @@
      <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container-fluid">
-          <br><br><br>
-          <a href="features-form.jsp" class="btn btn-primary">Add Seat</a> 
-<br><br>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Seat Class</th>
-      <th scope="col">Seat Width</th>
-      <th scope="col">Seat Type</th>
-      <th scope="col">Video Type</th>
-      <th scope="col">Power Type</th>
-      <th scope="col">Wifi</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-     <c:forEach items="${list}" var="features" varStatus="loop">
-    <tr>
-      <td><c:out value="${features.id}" /></td> 
-      <td><c:out value="${features.seatCat}" /></td> 
-      <td><c:out value="${features.seatWidth}" /></td>
-      <td><c:out value="${features.seatType}" /></td>
-      <td><c:out value="${features.videoType}" /></td>
-      <td><c:out value="${features.powerType}" /></td>
-      <td><c:out value="${features.wifi}" /></td>
-      <td> <a href="featuresServlet?action=EDIT&id=${features.id}" class="btn btn-warning">Edit</a>  <a href="featuresServlet?action=DELETE&id=${features.id}" class="btn btn-danger">Delete</a> </td>
-    </tr>
-     </c:forEach>
-  </tbody>
-</table>
+         
+              <br><br>
+               <h2>Add Plane</h2>
+               <br>
+<div class="card">
+    <div class="card-body">
+        
+ <form action="featuresServlet?action=UPDATE&id=${plane.id}" method="post">
+  <div class="form-group">
+   
+    <label >Model</label>
+    <input type="text" class="form-control" name="seatCat" required value="<c:out value='${plane.seatCat}'/>">
+  </div>
+  <div class="form-group">
+    <label >Year</label>
+    <input type="text" class="form-control" name="seatWidth" requried value="<c:out value='${plane.seatWidth}'/>">
+  </div>
+  <div class="form-group">
+    <label >Capacity</label>
+    <input type="text" class="form-control" name="seatType" required value="<c:out value='${plane.seatType}'/>">
+  </div>
+  <input type="hidden" name="id" value="${plane.id}">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+            </div>
+         </div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
