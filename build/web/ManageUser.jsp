@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="simple-sidebar.css" rel="stylesheet">
-        <title>Manage Schedule</title>
+        <title>Manage User</title>
     </head>
     <body>
         <div class="d-flex" id="wrapper">
@@ -26,10 +26,13 @@
                 <div class="sidebar-heading"><img src="img/logo.png" width="200" height="100" alt=""></div>
                 <div class="list-group list-group-flush">
 
-                   <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                   <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Plane</a>
-                   <a href="#" class="list-group-item list-group-item-action bg-light">Statistic</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-primary active">Users</a>
+                   <a href="#" class="list-group-item list-group-item-action bg-light ">Profile</a>
+                   <a href="Manage Schedule.jsp" class="list-group-item list-group-item-action bg-light">Schedule</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light ">Seat List</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Seat Updates</a>
+                    <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Seat Feature</a>                    
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Seat Price</a>                    
+                    <a href="ManageUser.jsp" class="list-group-item list-group-item-action bg-primary active">Users</a>
 
                 </div>
             </div>
@@ -39,7 +42,7 @@
                     <br><br><br>
                     <form action="updateuser.jsp" method="post">
                         
-                    <button style="width: 160px;" type="submit" align="center" margin-left="auto" margin-right="auto">CREATE USER</button>
+                    <button type="submit" class="btn btn-success">CREATE USER</button>
                     <br><br>
                     <table class=" bg-light table table-bordered">
                         <thead>

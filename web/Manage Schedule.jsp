@@ -31,6 +31,7 @@
                     <a href="#" class="list-group-item list-group-item-action bg-light">Seat Updates</a>
                     <a href="#" class="list-group-item list-group-item-action bg-primary active">Schedule</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light">Seat Price</a>
+                    <a href="ManageUser.jsp" class="list-group-item list-group-item-action bg-light">User</a>
 
                 </div>
             </div>
