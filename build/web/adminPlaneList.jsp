@@ -51,7 +51,7 @@
    
 <div class="container-fluid mt-5">
 
-<a href="adminPlaneForm.jsp" class="btn btn-primary my-3" id="add">Add Plane</a>
+<a href="adminPlaneAdd.jsp" class="btn btn-primary my-3" id="add">Add Plane</a>
 <!--Table-->
 <form action="booking.jsp" method="post"> 
 <table id="tablePreview" class="table">
@@ -75,7 +75,7 @@
       <td>Boing 777</td>
       <td>2005</td>
       <td>200</td>
-      <td><button type="button" class="btn btn-outline-dark">edit</button></td>
+      <td><a href="adminPlaneList.jsp"><button type="button" class="btn btn-outline-dark">edit</button><a/></td>
       
       
       </td>
@@ -85,7 +85,7 @@
       <td>Airbus A380 </td>
       <td>2009</td>
       <td>350</td>
-      <td><button type="button" class="btn btn-outline-dark">edit</button></td>
+      <td><a href="adminPlaneList.jsp"><button type="button" class="btn btn-outline-dark">edit</button><a/></td>
       
       
     </tr>
