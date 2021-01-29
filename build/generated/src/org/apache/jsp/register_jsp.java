@@ -113,12 +113,7 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Password\" required>\r\n");
       out.write("              </div>\r\n");
       out.write("              <div class=\"form-group\">\r\n");
-      out.write("                     <label class=\"text-left\">User Role</label><br>\r\n");
-      out.write("                <select class=\"form-control\" name=\"userType\">\r\n");
-      out.write("                    <option selected value=\"1\">Customer</option>\r\n");
-      out.write("                    <option value=\"2\">Admin</option>\r\n");
-      out.write("                    <option value=\"3\">Manager</option>\r\n");
-      out.write("                </select>\r\n");
+      out.write("                <input type=\"hidden\" class=\"form-control\" id=\"userType\" name=\"userType\" value=\"1\" required>\r\n");
       out.write("              </div>\r\n");
       out.write("              <button type=\"submit\" class=\"btn btn-primary btn-block\">Submit</button>\r\n");
       out.write("            </form>\r\n");

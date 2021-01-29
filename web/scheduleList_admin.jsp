@@ -1,12 +1,12 @@
 <%-- 
-    Document   : seatUpdate_admin
-    Created on : Jan 4, 2021, 6:40:40 PM
+    Document   : scheduleList_admin
+    Created on : Jan 28, 2021, 10:08:34 PM
     Author     : thattshini
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,8 +25,8 @@
       <div class="list-group list-group-flush">
     
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Seat Feature</a>
-        <a href="scheduleServlet?action=VIEW" class="list-group-item list-group-item-action bg-light" class="list-group-item list-group-item-action bg-light">Manage Schedule</a>
+        <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Seat Feature</a>
+        <a href="scheduleServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active" class="list-group-item list-group-item-action bg-light">Manage Schedule</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
      
       </div>
@@ -37,32 +37,46 @@
     <div id="page-content-wrapper">
       <div class="container-fluid">
           <br><br><br>
-          <a href="features-form.jsp" class="btn btn-primary">Add Seat</a> 
-<br><br>
+ <div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filter List
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="scheduleServlet?action=VIEWapprove">Approved</a>
+    <a class="dropdown-item" href="scheduleServlet?action=VIEWrejected">Rejected</a>
+    <a class="dropdown-item" href="scheduleServlet?action=VIEW">Pending</a>
+  </div>
+</div>
+          <br>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Seat Class</th>
-      <th scope="col">Seat Width</th>
-      <th scope="col">Seat Type</th>
-      <th scope="col">Video Type</th>
-      <th scope="col">Power Type</th>
-      <th scope="col">Wifi</th>
+      <th scope="col">Plane ID</th>
+      <th scope="col">Destination-Arrival</th>
+      <th scope="col">Departure Time</th>
+      <th scope="col">Arrival Time</th>
+      <th scope="col">Departure Date</th>
+      <th scope="col">Arrival Date</th>
+      <th scope="col">Seat Category</th>
+      <th scope="col">Price</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-     <c:forEach items="${list}" var="features" varStatus="loop">
+    <c:forEach items="${list}" var="schedule" varStatus="loop">
     <tr>
-      <td><c:out value="${features.id}" /></td> 
-      <td><c:out value="${features.seatCat}" /></td> 
-      <td><c:out value="${features.seatWidth}" /></td>
-      <td><c:out value="${features.seatType}" /></td>
-      <td><c:out value="${features.videoType}" /></td>
-      <td><c:out value="${features.powerType}" /></td>
-      <td><c:out value="${features.wifi}" /></td>
-      <td> <a href="featuresServlet?action=EDIT&id=${features.id}" class="btn btn-warning">Edit</a>  <a href="featuresServlet?action=DELETE&id=${features.id}" class="btn btn-danger">Delete</a> </td>
+      <td><c:out value="${schedule.id}" /></td> 
+      <td><c:out value="${schedule.plane_id}" /></td>
+      <td><c:out value="${schedule.destination_arrival}" /></td> 
+      <td><c:out value="${schedule.departureTime}" /></td>
+      <td><c:out value="${schedule.arrivalTime}" /></td>
+      <td><c:out value="${schedule.departureDate}" /></td>
+      <td><c:out value="${schedule.arrivalDate}" /></td>
+      <td><c:out value="${schedule.seatCat}" /></td>
+      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${schedule.price}" /></td>
+       <td> <a href="scheduleServlet?action=UNDO&id=${schedule.id}" class="btn btn-info">Undo</a> </td>
     </tr>
      </c:forEach>
   </tbody>

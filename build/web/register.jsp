@@ -74,12 +74,7 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
               </div>
               <div class="form-group">
-                     <label class="text-left">User Role</label><br>
-                <select class="form-control" name="userType">
-                    <option selected value="1">Customer</option>
-                    <option value="2">Admin</option>
-                    <option value="3">Manager</option>
-                </select>
+                <input type="hidden" class="form-control" id="userType" name="userType" value="1" required>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
