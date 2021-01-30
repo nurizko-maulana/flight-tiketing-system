@@ -1,6 +1,6 @@
 <%-- 
-    Document   : register
-    Created on : Jan 4, 2021, 2:12:49 PM
+    Document   : registerUser-admin
+    Created on : Jan 24, 2021, 6:19:00 PM
     Author     : thattshini
 --%>
 
@@ -74,10 +74,14 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
               </div>
               <div class="form-group">
-                <input type="hidden" class="form-control" id="userType" name="userType" value="1" required>
+                     <label class="text-left">User Role</label><br>
+                <select class="form-control" name="userType">
+                    <option value="1">Customer</option>
+                    <option value="2">Admin</option>
+                    <option selected value="3">Manager</option>
+                </select>
               </div>
-              <button type="submit" class="btn btn-primary btn-block mb-3">Submit</button>
-              <p class="d-inline-block">Already have an account?</p> <a class="text-center d-inline-block" href="login.jsp">Login !</a>
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
           </div>
           </div>

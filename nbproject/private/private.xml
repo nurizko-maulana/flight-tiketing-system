@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/nbproject/project.properties</file>
-            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/src/java/features/featuresServlet.java</file>
-            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/.gitignore</file>
-            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/plane.jsp</file>
-            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/web/login.jsp</file>
-            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/nbproject/project.xml</file>
-            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/nbproject/ant-deploy.xml</file>
-            <file>file:/Users/duncanleo/NetBeansProjects/flight-tiketing-system/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/seatUpdate_admin.jsp</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/schedule/scheduleServlet.java</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/scheduleList_admin.jsp</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/register.jsp</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/features/featuresServlet.java</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/bean/Schedule.java</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/seatList_admin.jsp</file>
         </group>
     </open-files>
 </project-private>
