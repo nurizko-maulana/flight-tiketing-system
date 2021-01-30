@@ -1,10 +1,12 @@
 <%-- 
     Document   : ManageUser
-    Created on : Jan 19, 2021, 9:19:53 PM
+    Created on : Jan 24, 2021, 10:02:52 AM
     Author     : SwarnnaNagesvaran
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,82 +35,55 @@
                     <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Seat Feature</a>                    
                     <a href="#" class="list-group-item list-group-item-action bg-light">Seat Price</a>                    
                     <a href="ManageUser.jsp" class="list-group-item list-group-item-action bg-primary active">Users</a>
-
                 </div>
             </div>
-            <!-- /#sidebar-wrapper -->
-            <div class="bg-secondary" id="page-content-wrapper">
-                <div class="container-fluid">
-                    <br><br><br>
-                    <form action="updateuser.jsp" method="post">
-                        
-                    <button type="submit" class="btn btn-success">CREATE USER</button>
-                    <br><br>
-                    <table class=" bg-light table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">No.</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">User Type</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">ID</th>
-                                <th scope="col">Actions</th>
+                
+              <br></br>
+              <center>
+               <h3>Manage User</h3>
+               <br></br>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Tom</td>
-                                <td>tomriddle@example.com</td>
-                                <td>STAFF</td>
-                                <td>TOM RIDDLE</td>
-                                <td>012</td>                               
-                                <td>
-                                    <button type="submit" class="btn btn-success">Update</button>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                              <tr>
-                                  <th scope="row">2</th>
-                                <td>Bond</td>
-                                <td>jamesb@example.com</td>
-                                <td>CUSTOMER </td>
-                                <td>JAMES BOND</td>
-                                <td>007</td>                               
-                                <td>
-                                    <button type="submit" class="btn btn-success">Update</button>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                           <tr>
-                                <th scope="row">3</th>
-                                <td>Johnson</td>
-                                <td>johnsonlim@example.com</td>
-                                <td>STAFF</td>
-                                <td>JOHNSON LIM</td>
-                                <td>011</td>                               
-                                <td>
-                                    <button type="submit" class="btn btn-success">Update</button>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- /#page-content-wrapper -->
+                    <br></br>
+            
+ 
 
-        </div>
+                    <div>
+        <a class="button" href="User-form.jsp">Add User</a>
+  </div>
 
+                    <br>
+             <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col">User Type</th>      
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <c:forEach items="${list}" var="user" varStatus="loop">
+    <tr>
+      <td><c:out value="${user.id}" /></td> 
+      <td><c:out value="${user.name}" /></td>
+      <td><c:out value="${user.username}" /></td> 
+      <td><c:out value="${user.password}" /></td>
+      <td><c:out value="${user.userType}" /></td> 
+      <td> <a href="scheduleServlet?action=EDIT&id=${user.id}" class="btn btn-info">Edit</a> </td>
+      <td> <a href="scheduleServlet?action=DELETE&id=${user.id}" class="btn btn-info">Delete</a> </td>
+    </tr>
+     </c:forEach>
+  </tbody>
+</table>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
-
-        <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-        -->
-</form>
     </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </html>
