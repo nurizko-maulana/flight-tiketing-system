@@ -7,68 +7,36 @@ package user;
 
 
 import bean.User;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-/**
- *
- * @author thattshini
- */
-public class Validate  {
-            
-    /**
-     *
-     * @param username
-     * @param password
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
-    public static boolean checkUser(String username, String password) throws SQLException, ClassNotFoundException{
-        
-        
-        String driver = "com.mysql.jdbc.Driver";
-        String dbName = "fts";
-        String url = "jdbc:mysql://localhost/" + dbName + "?";
-        String userName = "root"; 
-        String passWord = ""; 
-        String query = "SELECT * FROM users WHERE email = ? and password = ?";
-        
-        boolean status = false; 
-         
-        Class.forName(driver);
-      
-          
-        try{
-            
-            Connection con = DriverManager.getConnection(url, userName, passWord);
-            PreparedStatement st= con.prepareStatement(query);
-
-
-            st.setString(1,username);
-            st.setString(2,password);
-
-
-
-            ResultSet rs = st.executeQuery();
-
-            status = rs.next();
-        
-        
-      
+import java.sql.*;
+ 
+public class Validate {
+ 
+    public User checkLogin(String email, String password) throws SQLException,
+            ClassNotFoundException {
+        String jdbcURL = "jdbc:mysql://localhost:3306/fts";
+        String dbUser = "root";
+        String dbPassword = "root";
+ 
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+        String sql = "SELECT * FROM users WHERE email = ? and password = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, email);
+        statement.setString(2, password);
+ 
+        ResultSet result = statement.executeQuery();
+ 
+        User user = null;
+ 
+        if (result.next()) {
+            user = new User();
+            user.setUsername(result.getString("username"));
+            user.setUsername(result.getString("userType"));
+            user.setEmail(email);
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-            return status;
-       
-    
-    }
-
-    private void printSQLException(SQLException e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ 
+        connection.close();
+ 
+        return user;
     }
 }

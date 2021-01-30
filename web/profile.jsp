@@ -45,7 +45,7 @@
                             USER
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="index.html">Logout</a>
                         </div>
                     </div>
                     <div class="w-auto h-100 pt-5"> 
