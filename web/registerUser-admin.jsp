@@ -76,9 +76,9 @@
               <div class="form-group">
                      <label class="text-left">User Role</label><br>
                 <select class="form-control" name="userType">
-                    <option value="1">Customer</option>
-                    <option value="2">Admin</option>
-                    <option selected value="3">Manager</option>
+                    <option value="customer">Customer</option>
+                    <option value="admin">Admin</option>
+                    <option selected value="manager">Manager</option>
                 </select>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Submit</button>
