@@ -29,7 +29,7 @@ public class registerDAO  {
          
          int result = 0;
          
-        Class.forName(driver);
+        Class.forName(driver); 
       
           
          try{

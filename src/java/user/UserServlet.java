@@ -56,6 +56,7 @@ public class UserServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -166,7 +167,7 @@ public class UserServlet extends HttpServlet {
                                 con.close();
                                 
                          request.setAttribute("User", user);       
-                         RequestDispatcher rd = request.getRequestDispatcher("Edit-User.jsp");
+                         RequestDispatcher rd = request.getRequestDispatcher("editUser.jsp");
                          rd.forward(request,response);
                         
                     }
@@ -177,4 +178,6 @@ public class UserServlet extends HttpServlet {
                 /*}*/
 //</editor-fold>
     }
+
+   
 }

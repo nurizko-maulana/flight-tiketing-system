@@ -48,7 +48,7 @@
  
 
                     <div>
-        <a class="button" href="registerUser-adming.jsp">Add User</a>
+        <a class="button" href="registerUser-admin.jsp">Add User</a>
   </div>
 
                     <br>
@@ -72,8 +72,8 @@
       <td><c:out value="${user.username}" /></td> 
       <td><c:out value="${user.password}" /></td>
       <td><c:out value="${user.userType}" /></td> 
-      <td> <a href="scheduleServlet?action=EDIT&id=${user.id}" class="btn btn-info">Edit</a> </td>
-      <td> <a href="scheduleServlet?action=DELETE&id=${user.id}" class="btn btn-info">Delete</a> </td>
+      <td> <a href="UserServlet?action=EDIT&id=${user.id}" class="btn btn-info">Edit</a> </td>
+      <td> <a href="UserServlet?action=DELETE&id=${user.id}" class="btn btn-info">Delete</a> </td>
     </tr>
      </c:forEach>
   </tbody>
