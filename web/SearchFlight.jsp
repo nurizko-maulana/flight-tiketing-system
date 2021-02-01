@@ -44,7 +44,7 @@
 <div class="card">
     <div class="card-body">
         
- <form action="bookingServlet?action=VIEW" method="post">
+ <form action="viewFlight.jsp" method="post">
  <div class="form-group">
   <label >Departure</label>
     <select class="form-control" name="departure">
