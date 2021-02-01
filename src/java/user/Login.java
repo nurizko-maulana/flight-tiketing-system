@@ -33,20 +33,23 @@ public class Login extends HttpServlet {
          
         try {
             User user = userDao.checkLogin(username, password);
-            String destPage = "index.jsp";
+            String destPage = "index.html";
              
             if (user != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 System.out.println(user.getUsername());
-                switch (user.getUsername()) {
-                    case "user":
+                System.out.println(user.getUserType());
+                System.out.println(user.getEmail());
+                int type = 1;
+                switch (user.getUserType()) {
+                    case 1:
                         destPage = "flightSchedule.jsp";
                         break;
-                    case "admin":
+                    case 2:
                         destPage = "Manage Schedule.jsp";
                         break;
-                    case "manager":
+                    case 3:
                         destPage = "seatList_admin.jsp";
                         break;
                     default:
