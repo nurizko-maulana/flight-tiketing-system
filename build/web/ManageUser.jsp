@@ -52,6 +52,7 @@
   </div>
 
                     <br>
+             <form action="UserServlet?action=VIEW&id=${user.id}" method="get">
              <table class="table table-bordered">
   <thead>
     <tr>
