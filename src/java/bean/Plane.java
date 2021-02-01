@@ -44,4 +44,32 @@ public class Plane implements Serializable{
     public int getFeature_id() {
         return feature_id;
     }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @param model the model to set
+     */
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    /**
+     * @param year the year to set
+     */
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    /**
+     * @param feature_id the feature_id to set
+     */
+    public void setFeature_id(int feature_id) {
+        this.feature_id = feature_id;
+    }
 }
