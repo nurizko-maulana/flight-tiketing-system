@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
                 System.out.println(user.getUserType());
                 System.out.println(user.getEmail());
                 int type = 1;
-                switch (user.getUserType()) {
+                switch (type) {
                     case 1:
                         destPage = "flightSchedule.jsp";
                         break;

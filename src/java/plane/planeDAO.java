@@ -8,53 +8,45 @@ import bean.Plane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 /**
  *
  * @author duncanleo
  */
 public class planeDAO {
     
-        public int registerUser(Plane user) throws SQLException, ClassNotFoundException{
+        public ArrayList findAll() throws SQLException, ClassNotFoundException{
         
          String driver = "com.mysql.jdbc.Driver";
          String dbName = "fts";
          String url = "jdbc:mysql://localhost/" + dbName + "?";
          String userName = "root"; 
          String passWord = ""; 
-         String query = "INSERT INTO users(username, email, password, userType) VALUES(?,?, ?, ?)";
-        
+         String query = "SELECT * FROM users";
+         Class.forName(driver);
          
-         int result = 0;
-         
-        Class.forName(driver);
-      
-          
-         try{
-        Connection con = DriverManager.getConnection(url, userName, passWord);
-        PreparedStatement st= con.prepareStatement(query);
-        
-       
-        st.setString(1,user.getUsername());
-        st.setString(2,user.getEmail());
-        st.setString(3, user.getPassword());
-        st.setInt(4, user.getUserType());
-        
-        int insertStatus=0; 
-       
-        st.executeUpdate();
-        
-         System.out.println(insertStatus + "row affected");
-        
-      
-         }
-         catch (SQLException e) {
-            // process sql exception
-            printSQLException(e);
-        }
-            return result;
-       
-    
-    }
-    
+            Connection con = DriverManager.getConnection(url, userName, passWord);
+            PreparedStatement st = con.prepareStatement(query);
+
+
+            ResultSet result = st.executeQuery();
+            ArrayList<Plane> planes = new ArrayList<Plane>();
+            Plane plane = null;
+
+            if (result.next()) {
+                plane = new Plane();
+                plane.setModel(result.getString("model"));
+                plane.setYear((Integer.parseInt(result.getString("year"))));
+                plane.setCapacity(Integer.parseInt(result.getString("capacity")));
+                planes.add(plane);
+            }
+
+            con.close();
+
+            return planes;
+        }       
 }
+         
+   

@@ -15,6 +15,7 @@ public class Plane implements Serializable{
     private int id;
     private String model;
     private int year;
+    private int capacity;
     private int feature_id;
 
     /**
@@ -71,5 +72,19 @@ public class Plane implements Serializable{
      */
     public void setFeature_id(int feature_id) {
         this.feature_id = feature_id;
+    }
+
+    /**
+     * @return the capacity
+     */
+    public int getCapacity() {
+        return capacity;
+    }
+
+    /**
+     * @param capacity the capacity to set
+     */
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }
