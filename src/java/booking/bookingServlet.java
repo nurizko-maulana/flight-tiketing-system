@@ -6,13 +6,13 @@
 package booking;
 
 import bean.booking;
-import bean.Flight1;
+import bean.Schedule;
+import bean.Features;
+import bean.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,6 +26,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import user.Validate;
 
 /**
  *
@@ -84,25 +86,22 @@ public class bookingServlet extends HttpServlet {
                 
                 if (action.equals("VIEW"))                    
                 {
-                     String query = "SELECT * FROM Flight";
+                     String query = "SELECT * FROM schedule";
                      Connection con = DriverManager.getConnection(url, userName,passWord);
                      Statement st = con.createStatement();
                      ResultSet resultSet = st.executeQuery(query);
                      
                      while(resultSet.next()) {
                          
-                         Flight1 Flight = new Flight1();
-                         Flight.setId(resultSet.getInt(1));
-                         Flight.setFlightNo(resultSet.getString(2));
-                         Flight.setDeparture(resultSet.getString(3));
-                         Flight.setDestination(resultSet.getString(4));
-                         Flight.setDepatureTime(resultSet.getTime(5));
-                         Flight.setArrivalTime(resultSet.getTime(6));
-                         Flight.setDuration(resultSet.getTimestamp(7));
-                         Flight.setEconomicPrice(resultSet.getDouble(8));
-                         Flight.setBusinnessPrice(resultSet.getDouble(9));
-                         Flight.setFirstclassPrice(resultSet.getDouble(10));
-                         list.add(Flight);                                            
+                         Schedule schedule = new Schedule();   
+                         schedule.setId(resultSet.getInt("id"));
+                         schedule.setPlane_id(resultSet.getInt("plane_id"));
+                         schedule.setDestination_arrival(resultSet.getString("destination_arrival"));
+                         schedule.setDepartureDate(resultSet.getDate("departureDate"));
+                         schedule.setDepartureTime(resultSet.getTime("departureTime"));
+                         schedule.setArrivalTime(resultSet.getTime("arrivalTime"));  
+                         schedule.setPrice(resultSet.getDouble("price"));
+                         list.add(schedule);                                            
     
                      }
                      
@@ -116,24 +115,24 @@ public class bookingServlet extends HttpServlet {
                                
                 } else if (action.equals("VIEWBOOKING")) {
                     
-                    String query = "SELECT * FROM booking";
+                    String query = "SELECT * from schedule";                              
                     Connection con = DriverManager.getConnection(url, userName, passWord);
                     Statement st = con.createStatement();
                     ResultSet resultSet = st.executeQuery(query);
                     
+                                      
                     while(resultSet.next()) {
                         
-                        booking booking = new booking ();
-                        booking.setId(resultSet.getInt(1));
-                        booking.setNameofPas(resultSet.getString(2));
-                        booking.setDeparture(resultSet.getString(3));
-                        booking.setDestination(resultSet.getString(4));
-                        booking.setDepartureDate(resultSet.getDate(5));
-                        booking.setDepartureTime(resultSet.getTime(6));
-                        booking.setArrivalTime(resultSet.getTime(7));
+                        Schedule schedule = new Schedule();                                        
+                        schedule.setDestination_arrival(resultSet.getString("destination_arrival"));
+                        schedule.setDepartureDate(resultSet.getDate("departureDate"));
+                        schedule.setDepartureTime(resultSet.getTime("departureTime"));
+                        schedule.setArrivalTime(resultSet.getTime("arrivalTime"));
+                        schedule.setSeatCat(resultSet.getString("seatCat"));                                           
+                        list.add(schedule);     
                         
-                        list.add(booking);                   
-                    }
+                    }                  
+                    
                     
                     st.close();
                     con.close();
@@ -141,41 +140,34 @@ public class bookingServlet extends HttpServlet {
                     request.setAttribute("list", list);
                     sendPage(request, response, "/bookingHistory.jsp");
                     
-                } else if (action.equals("CHECKOUT")){
-                
-                        String query = "INSERT INTO booking(nameofPas, numofPas, baggage, nameofPay, cardNum, expiry, cvv) VALUES(?,?,?,?, ?, ?,?)";
-                        Connection con = DriverManager.getConnection(url, userName, passWord);
-                        PreparedStatement st= con.prepareStatement(query);
+                }  else if (action.equals("VIEWSEATCAT")){
+                            
+                     String query = "SELECT * from features";                              
+                    Connection con = DriverManager.getConnection(url, userName, passWord);
+                    Statement st = con.createStatement();
+                    ResultSet resultSet = st.executeQuery(query);
+                    
+                                      
+                    while(resultSet.next()) {
                         
-                        String nameofPas = request.getParameter("nameofPas");
-                        int numofPas = Integer.parseInt(request.getParameter("numofPas"));
-                        int baggage = Integer.parseInt(request.getParameter("baggage"));
-                        String nameofPay = request.getParameter("nameofPay");
-                        String cardNum = request.getParameter("cardNum");
-                        String expiry = request.getParameter("expiry");
-                        String cvv = request.getParameter("cvv");
-        
-                        st.setString(1,nameofPas);
-                        st.setDouble(2,numofPas);
-                        st.setInt(3,baggage);
-                        st.setString(4,nameofPay);
-                        st.setString(5,cardNum);
-                        st.setString(6,expiry);
-                        st.setString(7, cvv);
+                        Features features = new Features();   
+                        features.setSeatCat(resultSet.getString("seatCat"));
+                        features.setSeatWidth(resultSet.getDouble("seatWidth"));
+                        features.setSeatType(resultSet.getString("seatType"));                        
+                        features.setVideoType(resultSet.getString("videoType"));
+                        features.setPowerType(resultSet.getString("powerType"));
+                        features.setWifi(resultSet.getString("wifi"));                           
                         
-                         
-                        st.executeUpdate();
-        
-                                
-                        st.close(); 
-                        con.close();
-                        
-                         
-                         RequestDispatcher rd = request.getRequestDispatcher("bookingHistory.jsp");
-                         rd.forward(request,response);
-                         
-                }
-                
+                    }                  
+                    
+                    
+                    st.close();
+                    con.close();
+                    
+                    request.setAttribute("list", list);
+                    sendPage(request, response, "/viewSeat.jsp");
+                            
+                            }         
                 
                 
             } catch (SQLException e) {
@@ -194,18 +186,36 @@ public class bookingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        String username = request.getParameter("email");
+        String password = request.getParameter("password");
+         
+        Validate userDao = new Validate();
+         
+        try {
+            User user = userDao.checkLogin(username, password);
+            String destPage = "login.jsp";
+             
+            if (user != null) {
+                HttpSession session = request.getSession();
+                user=(User) session.getAttribute("user");
+                
+                switch (user.getUserType()) {
+                    case 1:
+                        destPage = "viewFlight.jsp";
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                String message = "No user";
+                request.setAttribute("message", message);
+            }
+             
+            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+            dispatcher.forward(request, response);
+             
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new ServletException(ex);
+        }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-
 }

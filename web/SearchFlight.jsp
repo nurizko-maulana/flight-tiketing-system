@@ -16,7 +16,7 @@
         <title>SearchFlight</title>
     </head>
     <body>
-          
+         <%  request.getAttribute("schedule"); %> 
        <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
@@ -25,10 +25,10 @@
       <div class="sidebar-heading"><img src="img/logo.png" width="200" height="100" alt=""></div>
       <div class="list-group list-group-flush">
     
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="bookingServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Flight Schedule</a>
         <a href="bookingServlet?action=VIEWBOOKING"  class="list-group-item list-group-item-action bg-light">Booking History</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
+        <a href="login.jsp" class="list-group-item list-group-item-action bg-light">Logout</a>
      
       </div>
     </div>

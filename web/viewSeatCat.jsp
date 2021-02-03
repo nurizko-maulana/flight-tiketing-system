@@ -1,9 +1,8 @@
 <%-- 
-    Document   : bookingHistory
-    Created on : Jan 26, 2021, 7:05:01 AM
+    Document   : bookingDetail
+    Created on : Jan 23, 2021, 11:02:59 am
     Author     : SwarnnaNagesvaran
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -15,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="simple-sidebar.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Booking History</title>
+        <title>Flight Schedule</title>
     </head>
     
     
@@ -28,15 +27,21 @@
           <div class="sidebar-heading"><img src="img/logo.png" width="200" height="100" alt=""></div>
           <div class="list-group list-group-flush">
 
-            <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
-            <a href="flightSchedule.jsp" class="list-group-item list-group-item-action bg-light">Flight Schedule</a>
-            <a href="bookingHistory.jsp" class="list-group-item list-group-item-action bg-primary active">Booking History</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
-            
-          </div>
+       <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
+            <a href="bookingServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Flight Schedule</a>
+            <a href="bookingServlet?action=VIEWBOOKING" class="list-group-item list-group-item-action bg-primary active">Booking History</a>
+            <a href="login.jsp" class="list-group-item list-group-item-action bg-light">Logout</a>
+         </div>
         </div>
         <!-- /#sidebar-wrapper -->
-    
+        <br></br>
+              <center>
+               <h3>List Of Flights</h3>
+               <br></br>   
+            
+                     <div>
+        
+  </div>
      <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container-fluid">
@@ -52,24 +57,27 @@
 <!--Table-->
 <table class="table table-bordered">
   <thead>
-    <tr>
-      <th scope="col">Departure-Arrival</th>      
-      <th scope="col">Departure Date</th>
-      <th scope="col">Departure Time</th>
-      <th scope="col">Arrival Time</th>
-      <th scope="col">Seat Type</th>      
+    <tr>     
+       <th scope="col">ID</th>
+       <th scope="col">Seat Class</th>
+       <th scope="col">Seat Width</th>
+       <th scope="col">Seat Type</th>
+       <th scope="col">Video Type</th>
+       <th scope="col">Power Type</th>
+       <th scope="col">Wifi</th>
     </tr>
   </thead>
-  <tbody> 
-    <c:forEach items="${list}" var="schedule" varStatus="loop">
-    <tr>      
-           
-      <td><c:out value="${schedule.destination_arrival}" /></td>
-      <td><c:out value="${schedule.departureDate}" /></td> 
-      <td><c:out value="${schedule.departureTime}" /></td> 
-      <td><c:out value="${schedule.arrivalTime}" /></td>
-       <td><a href="bookingServlet?action=VIEWSEATCAT"<c:out value="${schedule.seatCat}" /></td>
-      </tr>
+  <tbody>
+     <c:forEach items="${list}" var="features" varStatus="loop">
+    <tr>
+      <td><c:out value="${features.id}" /></td> 
+      <td><c:out value="${features.seatCat}" /></td> 
+      <td><c:out value="${features.seatWidth}" /></td> 
+      <td><c:out value="${features.seatType}" /></td> 
+      <td><c:out value="${features.videoType}" /></td> 
+      <td><c:out value="${features.powerType}" /></td> 
+      <td><c:out value="${features.wifi}" /></td> 
+    </tr>
      </c:forEach>
   </tbody>
 </table>
