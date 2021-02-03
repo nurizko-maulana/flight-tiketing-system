@@ -4,6 +4,8 @@
     Author     : duncanleo
 --%>
 
+<%@page import="bean.Plane"%>
+<%@page import="plane.plane"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -83,6 +85,10 @@
                                         <td><a href="adminPlaneList.jsp"><button type="button" class="btn btn-outline-dark">edit</button><a/></td>
                                         </td>
                                     </tr>
+                                    <%
+                                        Plane plane ;
+                                    
+                                    %>
                                 <c:forEach items="${list}" var="plane" varStatus="loop">
                                     <tr>
                                     <td><c:out value="${plane.id}" /></td> 

@@ -26,7 +26,7 @@
                 <div class="sidebar-heading"><img src="img/logo.png" width="200" height="100" alt=""></div>
                 <div class="list-group list-group-flush">
 
-                    <a href="#" class="list-group-item list-group-item-action bg-light ">Profile</a>
+                    <a href="profileServlet?action=VIEW" class="list-group-item list-group-item-action bg-light ">Profile</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light ">Seat List</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light">Seat Updates</a>
                     <a href="#" class="list-group-item list-group-item-action bg-primary active">Schedule</a>
