@@ -197,6 +197,7 @@ public class plane extends HttpServlet {
                 Connection con = DriverManager.getConnection(url, userName, passWord);
                 PreparedStatement st = con.prepareStatement(query);
                 Plane plane = new Plane();
+                System.out.println("STATUS TYPE "+ status);
 
                 if (status.equals("ACTIVE")) {
                     st.setString(1, "MAINTENANCE");
@@ -208,8 +209,8 @@ public class plane extends HttpServlet {
                 st.close();
                 con.close();
 
-                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
-                rd.forward(request, response);
+//                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
+//                rd.include(request, response);
 
             } else if (action.equals("UPDATE")) {
 

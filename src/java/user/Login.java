@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
                         destPage = "flightSchedule.jsp";
                         break;
                     case 2:
-                        destPage = "Manage Schedule.jsp";
+                        destPage = "/planes?action=VIEW";
                         break;
                     case 3:
                         destPage = "seatList_manager.jsp";
