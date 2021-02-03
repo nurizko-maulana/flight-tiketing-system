@@ -53,24 +53,23 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">No</th>      
-      <th scope="col">Number of Passengers</th>
-      <th scope="col">Additional Baggage(KG)</th>
-      <th scope="col">Seat Category</th>
-      <th scope="col">Booked On</th>  
-      <th scope="col">Action</th>
+       <th scope="col">Flight No</th>
+      <th scope="col">Destination-Arrival</th>      
+      <th scope="col">Departure Date</th>
+      <th scope="col">Departure Time</th>
+      <th scope="col">Arrival Time</th>      
+      <th scope="col">Price</th>  
     </tr>
   </thead>
   <tbody> 
     <c:forEach items="${list}" var="booking" varStatus="loop">
-    <tr>      
-           
-      <td><c:out value="${booking.id}" /></td>
-      <td><c:out value="${booking.numofpas}" /></td> 
-      <td><c:out value="${booking.baggage}" /></td> 
-      <td><a href="bookingServlet?action=VIEWSEATCAT"<c:out value="${booking.seatCat}"/></a></td>
-      <td><c:out value="${booking.booking}"/></td> 
-      <td><a href="bookingServlet?action=VIEWDetail">View Details</a></td>
+    <tr>             
+      <td><c:out value="${schedule.plane_id}" /></td> 
+      <td><c:out value="${schedule.destination_arrival}" /></td>
+      <td><c:out value="${schedule.departureDate}" /></td> 
+      <td><c:out value="${schedule.departureTime}" /></td> 
+      <td><c:out value="${schedule.arrivalTime}" /></td>   
+      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${schedule.price}" /></td>
       </tr>
      </c:forEach>
   </tbody>
