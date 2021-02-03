@@ -57,19 +57,22 @@
       <th scope="col">Departure Date</th>
       <th scope="col">Departure Time</th>
       <th scope="col">Arrival Time</th>
+      <th scope="col">Booked On</th>
       <th scope="col">Seat Type</th>      
     </tr>
   </thead>
   <tbody> 
-    <c:forEach items="${list}" var="schedule" varStatus="loop">
+    <c:forEach items="${list}" var="booking" varStatus="loop">
     <tr>      
            
       <td><c:out value="${schedule.destination_arrival}" /></td>
       <td><c:out value="${schedule.departureDate}" /></td> 
       <td><c:out value="${schedule.departureTime}" /></td> 
       <td><c:out value="${schedule.arrivalTime}" /></td>
-       <td><a href="bookingServlet?action=VIEWSEATCAT"<c:out value="${schedule.seatCat}" /></td>
+      <td><c:out value="${booking.booking}"/></td>
+       <td><a href="bookingServlet?action=VIEWSEATCAT"<c:out value="${booking.seatCat}" /></td>
       </tr>
+
      </c:forEach>
   </tbody>
 </table>
