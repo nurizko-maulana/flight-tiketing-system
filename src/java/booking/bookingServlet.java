@@ -73,6 +73,8 @@ public class bookingServlet extends HttpServlet {
             String userName = "root";
             String passWord = "";
             
+            
+            
             ArrayList list = new ArrayList ();
             String action = request.getParameter("action");
             
@@ -116,7 +118,7 @@ public class bookingServlet extends HttpServlet {
                                
                 } else if (action.equals("VIEWBOOKING")) {
                     
-                    String query = "SELECT * FROM schedule INNER JOIN booking ON booking.id = booking.schedule_id ORDER BY booking.id";                              
+                    String query = "SELECT * FROM booking";                              
                     Connection con = DriverManager.getConnection(url, userName, passWord);
                     Statement st = con.createStatement();
                     ResultSet resultSet = st.executeQuery(query);
@@ -124,14 +126,15 @@ public class bookingServlet extends HttpServlet {
                                       
                     while(resultSet.next()) {
                         
-                        Booking booking = new Booking();   
-                        Schedule schedule = new Schedule();
-                        schedule.setDestination_arrival(resultSet.getString("destination_arrival"));
-                        schedule.setDepartureDate(resultSet.getDate("departureDate"));
-                        schedule.setDepartureTime(resultSet.getTime("departureTime"));
-                        schedule.setArrivalTime(resultSet.getTime("arrivalTime"));
+                          
+                                          
+                        Booking booking = new Booking();
+                        booking.setId(resultSet.getInt("id"));
+                        booking.setNumofpas(resultSet.getInt("numofpas"));
+                        booking.setSeatCat(resultSet.getString("seatCat"));
+                        booking.setBaggage(resultSet.getInt("baggage"));
                         booking.setBooking(resultSet.getDate("booking"));
-                        booking.setSeatCat(resultSet.getString("seatCat"));                                           
+                                                                 
                         list.add(booking);     
                         
                     }                  
@@ -170,9 +173,39 @@ public class bookingServlet extends HttpServlet {
                     request.setAttribute("list", list);
                     sendPage(request, response, "/viewSeat.jsp");
                             
-                            }         
+                 } else if (action.equals("VIEWDetail")) {
+                    
+                    String query = "SELECT * FROM schedule WHERE departureDate BETWEEN CURDATE() and '2021-12-12' AND approve=1";                              
+                    Connection con = DriverManager.getConnection(url, userName, passWord);
+                    Statement st = con.createStatement();
+                    ResultSet resultSet = st.executeQuery(query);
+                    
+                                      
+                    while(resultSet.next()) {
+                        
+                          
+                                          
+                         Schedule schedule = new Schedule();   
+                         schedule.setId(resultSet.getInt("id"));
+                         schedule.setPlane_id(resultSet.getInt("plane_id"));
+                         schedule.setDestination_arrival(resultSet.getString("destination_arrival"));
+                         schedule.setDepartureDate(resultSet.getDate("departureDate"));
+                         schedule.setDepartureTime(resultSet.getTime("departureTime"));
+                         schedule.setArrivalTime(resultSet.getTime("arrivalTime"));  
+                         schedule.setPrice(resultSet.getDouble("price"));
+                         list.add(schedule);                                                                                     
+                            
+                        
+                    }                  
+                    
+                    
+                    st.close();
+                    con.close();
+                    
+                    request.setAttribute("list", list);
+                    sendPage(request, response, "/viewDetail.jsp");   
                 
-                
+                 } 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -189,36 +222,6 @@ public class bookingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("email");
-        String password = request.getParameter("password");
-         
-        Validate userDao = new Validate();
-         
-        try {
-            User user = userDao.checkLogin(username, password);
-            String destPage = "login.jsp";
-             
-            if (user != null) {
-                HttpSession session = request.getSession();
-                user=(User) session.getAttribute("user");
-                
-                switch (user.getUserType()) {
-                    case 1:
-                        destPage = "viewFlight.jsp";
-                        break;
-                    default:
-                        break;
-                }
-            } else {
-                String message = "No user";
-                request.setAttribute("message", message);
-            }
-             
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-            dispatcher.forward(request, response);
-             
-        } catch (SQLException | ClassNotFoundException ex) {
-            throw new ServletException(ex);
-        }
+        
     }
 }
