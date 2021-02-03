@@ -16,60 +16,60 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <div class="d-flex" id="wrapper">
+        <div class="d-flex" id="wrapper">
 
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-        
-      <div class="sidebar-heading"><img src="img/logo.png" width="200" height="100" alt=""></div>
-      <div class="list-group list-group-flush">
-    
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Seat Feature</a>
-        <a href="scheduleServlet?action=VIEW" class="list-group-item list-group-item-action bg-light" class="list-group-item list-group-item-action bg-light">Manage Schedule</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
-     
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-    
-     <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <div class="container-fluid">
-          <br><br><br>
-          <a href="features-form.jsp" class="btn btn-primary">Add Seat</a> 
-<br><br>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Seat Class</th>
-      <th scope="col">Seat Width</th>
-      <th scope="col">Seat Type</th>
-      <th scope="col">Video Type</th>
-      <th scope="col">Power Type</th>
-      <th scope="col">Wifi</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-     <c:forEach items="${list}" var="features" varStatus="loop">
-    <tr>
-      <td><c:out value="${features.id}" /></td> 
-      <td><c:out value="${features.seatCat}" /></td> 
-      <td><c:out value="${features.seatWidth}" /></td>
-      <td><c:out value="${features.seatType}" /></td>
-      <td><c:out value="${features.videoType}" /></td>
-      <td><c:out value="${features.powerType}" /></td>
-      <td><c:out value="${features.wifi}" /></td>
-      <td> <a href="featuresServlet?action=EDIT&id=${features.id}" class="btn btn-warning">Edit</a>  <a href="featuresServlet?action=DELETE&id=${features.id}" class="btn btn-danger">Delete</a> </td>
-    </tr>
-     </c:forEach>
-  </tbody>
-</table>
-      </div>
-    </div>
-    <!-- /#page-content-wrapper -->
+            <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+
+                <div class="sidebar-heading"><img src="img/logo.png" width="200" height="100" alt=""></div>
+                <div class="list-group list-group-flush">
+
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                    <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Seat Feature</a>
+                    <a href="scheduleServlet?action=VIEW" class="list-group-item list-group-item-action bg-light" class="list-group-item list-group-item-action bg-light">Manage Schedule</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
+
+                </div>
+            </div>
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <br><br><br>
+                    <a href="features-form.jsp" class="btn btn-primary">Add Seat</a> 
+                    <br><br>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Seat Class</th>
+                                <th scope="col">Seat Width</th>
+                                <th scope="col">Seat Type</th>
+                                <th scope="col">Video Type</th>
+                                <th scope="col">Power Type</th>
+                                <th scope="col">Wifi</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${list}" var="features" varStatus="loop">
+                                <tr>
+                                    <td><c:out value="${features.id}" /></td> 
+                                    <td><c:out value="${features.seatCat}" /></td> 
+                                    <td><c:out value="${features.seatWidth}" /></td>
+                                    <td><c:out value="${features.seatType}" /></td>
+                                    <td><c:out value="${features.videoType}" /></td>
+                                    <td><c:out value="${features.powerType}" /></td>
+                                    <td><c:out value="${features.wifi}" /></td>
+                                    <td> <a href="featuresServlet?action=EDIT&id=${features.id}" class="btn btn-warning">Edit</a>  <a href="featuresServlet?action=DELETE&id=${features.id}" class="btn btn-danger">Delete</a> </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
 
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

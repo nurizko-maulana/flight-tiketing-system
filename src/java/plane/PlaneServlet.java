@@ -30,32 +30,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PlaneServlet", urlPatterns = {"/plane"})
 public class PlaneServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PlaneServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PlaneServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException {
         // Get the dispatcher; it gets the main page to the user
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(fileName);
@@ -96,35 +70,40 @@ public class PlaneServlet extends HttpServlet {
             Logger.getLogger(plane.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        try {
+//        try {
         if (action.equals("VIEW")) {
-                String query = "SELECT * FROM planes";
-                Connection con = DriverManager.getConnection(url, userName, passWord);
-                Statement st = con.createStatement();
-                ResultSet resultSet = st.executeQuery(query);
-
-                while (resultSet.next()) {
-
-                    Plane plane = new Plane();
-                    plane.setId(resultSet.getInt("id"));
-                    plane.setCapacity(resultSet.getInt("capacity"));
-                    plane.setFeature_id(resultSet.getInt("feature_id"));
-                    plane.setModel(resultSet.getString("model"));
-                    plane.setYear(resultSet.getInt("year"));
-
-                    list.add(plane);
-                }
-
-                st.close();
-                con.close();
-
+//                String query = "SELECT * FROM planes";
+//                Connection con = DriverManager.getConnection(url, userName, passWord);
+//                Statement st = con.createStatement();
+//                ResultSet resultSet = st.executeQuery(query);
+//
+//                while (resultSet.next()) {
+//
+//                    Plane plane = new Plane();
+//                    plane.setId(resultSet.getInt("id"));
+//                    plane.setCapacity(resultSet.getInt("capacity"));
+//                    plane.setFeature_id(resultSet.getInt("feature_id"));
+//                    plane.setModel(resultSet.getString("model"));
+//                    plane.setYear(resultSet.getInt("year"));
+//
+//                    list.add(plane);
+//                }
+//
+//                st.close();
+//                con.close();
+            planeDAO plane = new planeDAO();
+            try {
+                list = plane.findAll();
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(PlaneServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
             request.setAttribute("list", list);
-            sendPage(request, response, "adminPlaneList.jsp");
+            sendPage(request, response, "/adminPlaneList.jsp");
         }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -138,7 +117,6 @@ public class PlaneServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

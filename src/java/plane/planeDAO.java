@@ -23,7 +23,7 @@ public class planeDAO {
          String dbName = "fts";
          String url = "jdbc:mysql://localhost/" + dbName + "?";
          String userName = "root"; 
-         String passWord = ""; 
+         String passWord = "root"; 
          String query = "SELECT * FROM users";
          Class.forName(driver);
          
@@ -31,15 +31,22 @@ public class planeDAO {
             PreparedStatement st = con.prepareStatement(query);
 
 
-            ResultSet result = st.executeQuery();
+            ResultSet resultSet = st.executeQuery();
             ArrayList<Plane> planes = new ArrayList<Plane>();
             Plane plane = null;
 
-            if (result.next()) {
+            if (resultSet.next()) {
                 plane = new Plane();
-                plane.setModel(result.getString("model"));
-                plane.setYear((Integer.parseInt(result.getString("year"))));
-                plane.setCapacity(Integer.parseInt(result.getString("capacity")));
+                plane.setId(resultSet.getInt("id"));
+                plane.setCapacity(resultSet.getInt("capacity"));
+                plane.setFeature_id(resultSet.getInt("feature_id"));
+                plane.setModel(resultSet.getString("model"));
+                plane.setYear(resultSet.getInt("year"));
+                System.out.println(plane.getId());
+                System.out.println(plane.getCapacity());
+                System.out.println(plane.getModel());
+                System.out.println(plane.getYear());
+                System.out.println(plane.getFeature_id());
                 planes.add(plane);
             }
 
