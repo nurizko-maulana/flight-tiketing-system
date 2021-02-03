@@ -69,7 +69,6 @@ public class PlaneServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -120,7 +119,7 @@ public class PlaneServlet extends HttpServlet {
                 con.close();
 
             request.setAttribute("list", list);
-            sendPage(request, response, "/adminPlaneList.jsp");
+            sendPage(request, response, "adminPlaneList.jsp");
         }
 
         } catch (SQLException e) {

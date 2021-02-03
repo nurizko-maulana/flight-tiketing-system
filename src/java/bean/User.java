@@ -12,11 +12,11 @@ import java.io.Serializable;
  * @author thattshini
  */
 public class User implements Serializable{
-    
-    String username;
-    String email;
-    String password;
-    int userType;
+    private int id;
+    private String username;
+    private String email;
+    private String password;
+    private int userType;
 
     public User() {
     }
@@ -51,6 +51,20 @@ public class User implements Serializable{
 
     public void setUserType(int userType) {
         this.userType = userType;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
     
     
