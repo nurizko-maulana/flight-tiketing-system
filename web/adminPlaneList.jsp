@@ -55,7 +55,7 @@
 
                     <div class="container-fluid mt-5">
 
-                        <a href="adminPlaneAdd.jsp" class="btn btn-primary my-3" id="add">Add Plane</a>
+                        <a href="planes?action=CREATE" class="btn btn-primary my-3" id="add">Add Plane</a>
                         <!--Table-->
                         <form action="booking.jsp" method="post"> 
                             <table id="tablePreview my_table" class="table">
@@ -74,18 +74,18 @@
                                 <!--Table head-->
                                 <!--Table body-->
                                 <tbody>
-                                 
-                                <c:forEach items="${list}" var="plane" varStatus="loop">
-                                    <tr>
-                                    <td><c:out value="${plane.id}" /></td> 
-                                    <td><c:out value="${plane.model}" /></td> 
-                                    <td><c:out value="${plane.year}" /></td>
-                                    <td><c:out value="${plane.capacity}" /></td>
-                                    <td><c:out value="${plane.feature_id}" /></td>
-                                    <td><c:out value="${plane.status}" /></td>
-                                    <td> <a href="plane?action=EDIT&id=${plane.id}" class="btn btn-warning">Edit</a>  <a href="plane?action=DELETE&id=${plane.id}" class="btn btn-danger">Delete</a> <a href="plane?action=ACTIVATE&id=${plane.id}&status=${plane.status}" class="btn btn-secondary">ACTIVATE/DEACTIVATE</a> </td>
-                                    </tr>
-                                </c:forEach>
+
+                                    <c:forEach items="${list}" var="plane" varStatus="loop">
+                                        <tr>
+                                            <td><c:out value="${plane.id}" /></td> 
+                                            <td><c:out value="${plane.model}" /></td> 
+                                            <td><c:out value="${plane.year}" /></td>
+                                            <td><c:out value="${plane.capacity}" /></td>
+                                            <td><c:out value="${plane.feature_id}" /></td>
+                                            <td><c:out value="${plane.status}" /></td>
+                                            <td> <a href="planes?action=EDIT&id=${plane.id}" class="btn btn-warning">Edit</a>  <a href="planes?action=DELETE&id=${plane.id}" class="btn btn-danger">Delete</a>  <a href="planes?action=ACTIVATE&id=${plane.id}&status=${plane.status}" class="btn btn-secondary">ACTIVATE/DEACTIVATE</a> </td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                                 <!--Table body-->
                             </table>
