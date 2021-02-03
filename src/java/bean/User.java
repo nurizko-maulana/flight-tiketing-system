@@ -12,14 +12,32 @@ import java.io.Serializable;
  * @author thattshini
  */
 public class User implements Serializable{
-    private int id;
-    private String username;
-    private String email;
-    private String password;
-    private int userType;
+    int id;
+    String name;
+    String username;
+    String email;
+    String password;
+    String userType;
 
     public User() {
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 
     public String getUsername() {
         return username;
@@ -45,11 +63,11 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public int getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(int userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 

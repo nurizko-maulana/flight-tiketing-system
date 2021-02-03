@@ -1,7 +1,7 @@
 <%-- 
     Document   : bookingDetail
-    Created on : 14-Jan-2021, 11:02:59
-    Author     : duncanleo
+    Created on : Jan 23, 2021, 11:02:59 am
+    Author     : SwarnnaNagesvaran
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,17 +47,53 @@
   </div>
 </div>
 <!--Table-->
-<table id="tablePreview" class="table">
-<tr><td align="left"><h6 style="font-size: bold">Flight No: EK1971 </h6></td>
-<tr><td align="left"<h6 style="font-size: bold">Number of Passengers: 1 </h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Passenger Name: Johnson Lim</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Passenger ID: 1234567</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Contact Details: 0123456789</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Destination - Arrival: DHAKA - KUALA LUMPUR</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Departure Time: 1320</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Arrival Time: 1630 </h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Price: RM1 500</h6></td></tr>
-
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Flight No</th>
+      <th scope="col">Departure</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Departure Date</th>
+      <th scope="col">Departure Time</th>
+      <th scope="col">Arrival Time</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Economic Price</th>
+      <th scope="col">Business Price</th>
+      <th scope="col">First Class Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <th scope="row">1</th>
+  <td>AK6412</td>
+  <td>Penang</td>
+  <td>Johor Bahru</td>
+  <td>2021-02-04</td>
+  <td>0910hrs</td>
+  <td>1020hrs</td>
+  <td>1hr10min</td>
+  <td>RM 80</td>
+  <td>RM 100</td>
+  <td>RM 120</td>
+  <td> <a href="checkout" class="btn btn-info">Book</a> </td>    
+    <c:forEach items="${list}" var="Flight" varStatus="loop">
+    <tr>
+      <td><c:out value="${flight.id}" /></td> 
+      <td><c:out value="${flight.flightNo}" /></td>
+      <td><c:out value="${flight.departure}" /></td> 
+      <td><c:out value="${flight.destination}" /></td>
+      <td><c:out value="${flight.departureDate}" /></td>
+      <td><c:out value="${flight.departureTime}" /></td>
+      <td><c:out value="${flight.arrivalTime}" /></td>
+      <td><c:out value="${flight.duration}}" /></td>
+      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${flight.economicPrice}" /></td>
+      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${flight.businessPrice}" /></td>
+      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${flight.firstclassPrice}" /></td>
+       <td> <a href="checkout" class="btn btn-info">Book</a> </td>
+    </tr>
+     </c:forEach>
+  </tbody>
 </table>
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

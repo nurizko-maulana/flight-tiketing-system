@@ -45,7 +45,7 @@ public class regServlet extends HttpServlet {
          String username = request.getParameter("username"); 
          String email = request.getParameter("email"); 
          String password = request.getParameter("password");
-         int userType = Integer.parseInt(request.getParameter("userType")); 
+         String userType = request.getParameter("userType"); 
          
            
             User user = new User();

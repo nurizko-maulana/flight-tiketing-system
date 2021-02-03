@@ -1,8 +1,9 @@
 <%-- 
-    Document   : bookingDetail
-    Created on : 14-Jan-2021, 11:02:59
-    Author     : duncanleo
+    Document   : bookingHistory
+    Created on : Jan 26, 2021, 7:05:01 AM
+    Author     : SwarnnaNagesvaran
 --%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="simple-sidebar.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Booking Details</title>
+        <title>Booking History</title>
     </head>
     
     
@@ -28,7 +29,7 @@
 
             <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
             <a href="flightSchedule.jsp" class="list-group-item list-group-item-action bg-light">Flight Schedule</a>
-            <a href="bookingDetail.jsp" class="list-group-item list-group-item-action bg-primary active">Booking Details</a>
+            <a href="bookingHistory.jsp" class="list-group-item list-group-item-action bg-primary active">Booking History</a>
             
           </div>
         </div>
@@ -47,17 +48,41 @@
   </div>
 </div>
 <!--Table-->
-<table id="tablePreview" class="table">
-<tr><td align="left"><h6 style="font-size: bold">Flight No: EK1971 </h6></td>
-<tr><td align="left"<h6 style="font-size: bold">Number of Passengers: 1 </h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Passenger Name: Johnson Lim</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Passenger ID: 1234567</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Contact Details: 0123456789</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Destination - Arrival: DHAKA - KUALA LUMPUR</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Departure Time: 1320</h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Arrival Time: 1630 </h6></td></tr>
-<tr><td align="left"<h6 style="font-size: bold">Price: RM1 500</h6></td></tr>
-
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Flight No</th>
+      <th scope="col">Departure</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Departure Date</th>
+      <th scope="col">Departure Time</th>
+      <th scope="col">Arrival Time</th>
+         
+    </tr>
+  </thead>
+  <tbody>
+  <th scope="row">1</th>
+  <td>AK64612</td>
+  <td>Kuala Lumpur</td>
+  <td>Penang</td>
+  <td>2019-07-20</td>
+  <td>0910hrs</td>
+  <td>1000hrs</td>
+ 
+    <c:forEach items="${list}" var="Flight" varStatus="loop">
+    <tr>
+      <td><c:out value="${flight.id}" /></td> 
+      <td><c:out value="${flight.flightNo}" /></td>
+      <td><c:out value="${flight.departure}" /></td> 
+      <td><c:out value="${flight.destination}" /></td>
+      <td><c:out value="${flight.departureDate}" /></td>
+      <td><c:out value="${flight.departureTime}" /></td>
+      <td><c:out value="${flight.arrivalTime}" /></td>
+     
+      </tr>
+     </c:forEach>
+  </tbody>
 </table>
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

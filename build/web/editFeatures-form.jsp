@@ -27,7 +27,7 @@
     
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Seat Feature</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Seat Updates</a>
+        <a href="scheduleServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active" class="list-group-item list-group-item-action bg-light">Manage Schedule</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
      
       </div>
@@ -45,30 +45,58 @@
     <div class="card-body">
         
  <form action="featuresServlet?action=UPDATE&id=${features.id}" method="post">
-  <div class="form-group">
-   
-    <label >Seat Category</label>
-    <input type="text" class="form-control" name="seatCat" value="<c:out value='${features.seatCat}'/>">
+ <div class="form-group">
+  <label >Seat Category</label>
+    <select class="form-control" name="seatCat">
+      <option selected><c:out value='${features.seatCat}'/></option>
+      <option value="Economy">Economy</option>
+      <option value="Premium Economy">Premium Economy</option>
+      <option value="Business">Business</option>
+      <option value="First Class">First Class</option>
+    </select>
+  </div>
+ <div class="form-group">
+  <label >Seat Width</label>
+    <select class="form-control" name="seatWidth">
+      <option selected><c:out value='${features.seatWidth}'/></option>
+      <option value="24.0">24.0</option>
+      <option value="26.0">26.0</option>
+      <option value="28.0">28.0</option>
+    </select>
+  </div>
+ <div class="form-group">
+  <label >Seat Type</label>
+    <select class="form-control" name="seatType">
+      <option selected><c:out value='${features.seatType}'/></option>
+      <option value="Recliner">Recliner</option>
+      <option value="Standard">Standard</option>
+      <option value="Premium">Premium</option>
+    </select>
   </div>
   <div class="form-group">
-    <label >Seat Width</label>
-    <input type="text" class="form-control" name="seatWidth" value="<c:out value='${features.seatWidth}'/>">
+  <label >Video Type</label>
+    <select class="form-control" name="videoType">
+      <option selected><c:out value='${features.videoType}'/></option>
+      <option value="Personal TV">Personal TV</option>
+      <option value="Overhead TV">Overhead TV</option>
+      <option value="Seatback TV">Seatback TV</option>
+    </select>
   </div>
-  <div class="form-group">
-    <label >Seat Type</label>
-    <input type="text" class="form-control" name="seatType" value="<c:out value='${features.seatType}'/>">
+   <div class="form-group">
+  <label >Power Type</label>
+    <select class="form-control" name="powerType">
+      <option selected><c:out value='${features.powerType}'/></option>
+      <option value="AC">AC</option>
+      <option value="DC">DC</option>
+    </select>
   </div>
-    <div class="form-group">
-    <label >Video Type</label>
-    <input type="text" class="form-control" name="videoType" value="<c:out value='${features.videoType}'/>">
-  </div>
-    <div class="form-group">
-    <label >Power Type</label>
-    <input type="text" class="form-control" name="powerType" value="<c:out value='${features.powerType}'/>">
-  </div>
-    <div class="form-group">
-    <label>Wifi</label>
-    <input type="text" class="form-control" name="wifi" value="<c:out value='${features.wifi}'/>">
+   <div class="form-group">
+  <label >Wifi</label>
+    <select class="form-control" name="wifi">
+      <option selected><c:out value='${features.wifi}'/></option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
   </div>
   <input type="hidden" name="id" value="${features.id}">
   <button type="submit" class="btn btn-primary">Submit</button>
