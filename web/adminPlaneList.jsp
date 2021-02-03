@@ -55,7 +55,7 @@
 
                     <div class="container-fluid mt-5">
 
-                        <a href="adminPlaneAdd.jsp" class="btn btn-primary my-3" id="add">Add Plane</a>
+                        <a href="planes?action=CREATE" class="btn btn-primary my-3" id="add">Add Plane</a>
                         <!--Table-->
                         <form action="booking.jsp" method="post"> 
                             <table id="tablePreview my_table" class="table">
