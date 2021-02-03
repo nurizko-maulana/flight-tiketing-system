@@ -70,11 +70,18 @@ public class UserServlet extends HttpServlet {
                 ArrayList list = new ArrayList();
                 String action = request.getParameter("action");
                 
+                          
+        try { 
+            Class.forName(driver);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
                 try {
                     
                       if (action.equals("VIEW"))
             {
-                        String query = "SELECT * FROM User";	
+                        String query = "SELECT * FROM users";	
                         Connection con = DriverManager.getConnection(url, userName, passWord);
 			Statement st = con.createStatement(); 
 			ResultSet resultSet = st.executeQuery(query); 
@@ -83,11 +90,10 @@ public class UserServlet extends HttpServlet {
 				
                                 User user = new User();
                                 user.setId(resultSet.getInt(1));
-				user.setName(resultSet.getString(2));
-				user.setUsername(resultSet.getString(3));
-				user.setEmail(resultSet.getString(4));
-				user.setPassword(resultSet.getString(5));
-                                user.setUserType(resultSet.getInt(6));
+				user.setUsername(resultSet.getString(2));
+				user.setEmail(resultSet.getString(3));
+				user.setPassword(resultSet.getString(4));
+                                user.setUserType(resultSet.getInt(5));
                                 list.add(user);
                             
 			}
@@ -100,9 +106,7 @@ public class UserServlet extends HttpServlet {
                                             
                     }else if(action.equals ("DELETE")){
                         int id = Integer.parseInt(request.getParameter("id"));
-                        int user=2;
-                        
-                        String query = "DELETE FROM User WHERE id=" +id;
+                        String query = "DELETE FROM users WHERE id=" +id;
                         Connection con = DriverManager.getConnection(url, userName,passWord);
                         PreparedStatement st = con.prepareStatement(query);
                        
@@ -114,61 +118,6 @@ public class UserServlet extends HttpServlet {
                         
                         RequestDispatcher rd = request.getRequestDispatcher("UserServlet?action=VIEW");
                         rd.forward(request, response);
-                        
-                    }else if (action.equals("ADD")){
-                
-                        String query = "INSERT INTO User(name, usernam, email, password, userType) VALUES(?, ?, ?,?,?)";
-                        Connection con = DriverManager.getConnection(url, userName, passWord);
-                        PreparedStatement st= con.prepareStatement(query);
-                        
-                        String name = request.getParameter("name");                        
-                        String username = request.getParameter("username");
-                        String email= request.getParameter("email");
-                        String password = request.getParameter("password");
-                        String userType = request.getParameter("userType");
-        
-                        st.setString(1,name);
-                        st.setString(2,username);
-                        st.setString(3,email);
-                        st.setString(4,password);
-                        st.setString(5,userType);
-                        
-                        int insertStatus=0; 
-                        st.executeUpdate();
-        
-                        System.out.println(insertStatus + "row affected");
-        
-                        st.close(); 
-                        con.close();
-                        
-                         RequestDispatcher rd = request.getRequestDispatcher("UserServlet?action=VIEW");
-                         rd.forward(request,response);
-            }else if (action.equals("EDIT")){
-                
-                int id = Integer.parseInt(request.getParameter("id"));
-                String query = "SELECT * FROM User WHERE id="+id;
-                Connection con = DriverManager.getConnection(url, userName, passWord);
-                PreparedStatement st= con.prepareStatement(query);
-                ResultSet resultSet = st.executeQuery(query); 
-                User user = new User();
-                                
-                        
-			while(resultSet.next()) {
-                                user.setId(resultSet.getInt(1));
-				user.setName(resultSet.getString(2));
-				user.setUsername(resultSet.getString(3));
-				user.setEmail(resultSet.getString(4));
-				user.setPassword(resultSet.getString(5));
-                                user.setUserType(resultSet.getInt(6));
-                                
-			}
-                            
-                                st.close();
-                                con.close();
-                                
-                         request.setAttribute("User", user);       
-                         RequestDispatcher rd = request.getRequestDispatcher("editUser.jsp");
-                         rd.forward(request,response);
                         
                     }
                 }  catch (SQLException e) {

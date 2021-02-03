@@ -6,7 +6,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,54 +34,43 @@
                     <a href="#" class="list-group-item list-group-item-action bg-light">Seat Updates</a>
                     <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Seat Feature</a>                    
                     <a href="#" class="list-group-item list-group-item-action bg-light">Seat Price</a>                    
-                    <a href="ManageUser.jsp" class="list-group-item list-group-item-action bg-primary active">Users</a>
+                    <a href="UserServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Users</a>
                 </div>
             </div>
-                
-              <br></br>
-              <center>
-               <h3>Manage User</h3>
-               <br></br>
+             
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <br><br><br>
+                    <a href="registerUser-admin.jsp" class="btn btn-primary">Add User</a> 
+                    <br><br>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Password</th>
+                                    <th scope="col">User Type</th>      
+                                    <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${list}" var="user" varStatus="loop">
+                            <tr>
+                             <td><c:out value="${user.id}" /></td> 
+                             <td><c:out value="${user.username}" /></td>
+                             <td><c:out value="${user.email}" /></td> 
+                             <td><c:out value="${user.password}" /></td>
+                             <td><c:out value="${user.userType}" /></td> 
+                               <td> <a href="UserServlet?action=DELETE&id=${user.id}" class="btn btn-info">Delete</a> </td>
+                             </tr>
+                             </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
 
-                    <br></br>
-            
- 
-
-                    <div>
-        <a class="button" href="registerUser-admin.jsp">Add User</a>
-  </div>
-
-                    <br>
-             <form action="UserServlet?action=VIEW&id=${user.id}" method="get">
-             <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Username</th>
-      <th scope="col">Email</th>
-      <th scope="col">Password</th>
-      <th scope="col">User Type</th>      
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <c:forEach items="${list}" var="user" varStatus="loop">
-    <tr>
-      <td><c:out value="${user.id}" /></td> 
-      <td><c:out value="${user.name}" /></td>
-      <td><c:out value="${user.username}" /></td> 
-      <td><c:out value="${user.password}" /></td>
-      <td><c:out value="${user.userType}" /></td> 
-      <td> <a href="UserServlet?action=EDIT&id=${user.id}" class="btn btn-info">Edit</a> </td>
-      <td> <a href="UserServlet?action=DELETE&id=${user.id}" class="btn btn-info">Delete</a> </td>
-    </tr>
-     </c:forEach>
-  </tbody>
-</table>
-      </div>
-    </div>
-    <!-- /#page-content-wrapper -->
 
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

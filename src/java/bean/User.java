@@ -13,7 +13,6 @@ import java.io.Serializable;
  */
 public class User implements Serializable{
     int id;
-    String name;
     String username;
     String email;
     String password;
@@ -30,15 +29,6 @@ public class User implements Serializable{
         this.id = id;
     }
     
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-
     public String getUsername() {
         return username;
     }
