@@ -32,7 +32,9 @@
 
                     <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
                     <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Seat Feature</a>
-                    <a href="scheduleServlet?action=VIEW" class="list-group-item list-group-item-action bg-light" class="list-group-item list-group-item-action bg-light">Manage Schedule</a>
+                    <a href="scheduleServlet?action=VIEW" class="list-group-item list-group-item-action bg-light" >Schedule Updates</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Plane Details</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Statistic</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
 
                 </div>
