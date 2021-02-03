@@ -20,6 +20,11 @@
         <title>Plane List</title>
     </head>
 
+    <% //In case, if Admin session is not set, redirect to Login page
+        if ((request.getSession(false).getAttribute("isValidate") == null)) {
+    %>
+    <jsp:forward page="login.jsp"></jsp:forward>
+    <%}%>
 
     <body>
         <div class="d-flex" id="wrapper">
@@ -31,8 +36,9 @@
                 <div class="list-group list-group-flush">
 
                     <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
-                    <a href="PlaneServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Plane</a>
-                    <a href="statistic.jsp" class="list-group-item list-group-item-action bg-light">Statistic</a>
+                    <a href="Planes?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Plane</a>
+                    <a href="transaction?action=VIEW" class="list-group-item list-group-item-action bg-light">User Transaction</a>
+                    <a href="logout" class="list-group-item list-group-item-action bg-light">Logout</a>
 
                 </div>
             </div>

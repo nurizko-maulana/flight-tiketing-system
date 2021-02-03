@@ -108,8 +108,6 @@ public class plane extends HttpServlet {
                 Plane plane = new Plane();
 
                 while (resultSet.next()) {
-
-                    
                     plane.setId(resultSet.getInt("id"));
                     plane.setCapacity(resultSet.getInt("capacity"));
                     plane.setFeature_id(resultSet.getInt("feature_id"));
@@ -117,12 +115,30 @@ public class plane extends HttpServlet {
                     plane.setStatus(resultSet.getString("status"));
                     plane.setYear(resultSet.getInt("year"));
                 }
+                
+                String query2 = "SELECT * FROM features";
+                ResultSet resultSetFeature = st.executeQuery(query2);
+                
+                while (resultSetFeature.next()) {
 
+                    Features features = new Features();
+                    features.setId(resultSetFeature.getInt(1));
+                    features.setSeatCat(resultSetFeature.getString(2));
+                    features.setSeatWidth(resultSetFeature.getDouble(3));
+                    features.setSeatType(resultSetFeature.getString(4));
+                    features.setVideoType(resultSetFeature.getString(5));
+                    features.setPowerType(resultSetFeature.getString(6));
+                    features.setWifi(resultSetFeature.getString(7));
+                    list.add(features);
+
+                }
+                
                 st.close();
                 con.close();
-
+                
                 request.setAttribute("plane", plane);
-                sendPage(request, response, "/adminPlaneList.jsp");
+                request.setAttribute("list", list);
+                sendPage(request, response, "/adminPlaneEdit.jsp");
 
             }
             else if (action.equals("CREATE")) {
@@ -246,7 +262,7 @@ public class plane extends HttpServlet {
 
                 int id = Integer.parseInt(request.getParameter("id"));
 
-                String query = "DELETE FROM features WHERE id=" + id;
+                String query = "DELETE FROM planes WHERE id=" + id;
                 Connection con = DriverManager.getConnection(url, userName, passWord);
                 PreparedStatement st = con.prepareStatement(query);
 
@@ -255,7 +271,7 @@ public class plane extends HttpServlet {
                 st.close();
                 con.close();
 
-                RequestDispatcher rd = request.getRequestDispatcher("featuresServlet?action=VIEW");
+                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
                 rd.forward(request, response);
             }
 

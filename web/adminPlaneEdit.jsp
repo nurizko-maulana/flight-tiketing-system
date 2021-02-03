@@ -15,6 +15,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Add Plane</title>
     </head>
+    <% //In case, if Admin session is not set, redirect to Login page
+        if ((request.getSession(false).getAttribute("isValidate") == null)) {
+    %>
+    <jsp:forward page="login.jsp"></jsp:forward>
+    <%} %>
     <body>
         <%  request.getAttribute("features");%>
         <div class="d-flex" id="wrapper">
@@ -25,10 +30,10 @@
                 <div class="sidebar-heading"><img src="img/logo.png" width="200" height="100" alt=""></div>
                 <div class="list-group list-group-flush">
 
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                    <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Plane</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Statistic</a>
-                    <a href="login.jsp" class="list-group-item list-group-item-action bg-light">Logout</a>
+                    <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
+                    <a href="Planes?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Plane</a>
+                    <a href="transaction?action=VIEW" class="list-group-item list-group-item-action bg-light">User Transaction</a>
+                    <a href="logout" class="list-group-item list-group-item-action bg-light">Logout</a>
 
                 </div>
             </div>
@@ -57,18 +62,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label >Year</label>
-                                    <input type="number" min="1950" max="2021" class="form-control" name="year" required value="">
+                                    <input type="number" min="1950" max="2021" class="form-control" name="year" required value="${plane.year}">
                                 </div>
                                 <div class="form-group">
                                     <label >Capacity</label>
-                                    <input type="number" min="1" max="1000" class="form-control" name="capacity" required value="">
+                                    <input type="number" min="1" max="1000" class="form-control" name="capacity" required value="${plane.capacity}">
                                 </div>
                                 <div class="form-group">
                                     <label >Feature</label>
                                     <select class="form-control" name="feature_id">
-                                        <c:forEach items="${feature}" var="feature" varStatus="loop">
+                                        <c:forEach items="${list}" var="feature" varStatus="loop">
                                             <tr>
-                                                <option value="${feature.id}">${feature.id}</option>
+                                            <option value="${feature.id}">${feature.id}</option>
                                             </tr>
                                         </c:forEach>
                                     </select>
