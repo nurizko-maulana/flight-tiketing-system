@@ -16,6 +16,7 @@ public class Plane implements Serializable{
     private String model;
     private int year;
     private int capacity;
+    private String status;
     private int feature_id;
 
     /**
@@ -86,5 +87,19 @@ public class Plane implements Serializable{
      */
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
