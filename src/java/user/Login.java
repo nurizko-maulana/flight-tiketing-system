@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
                         destPage = "Manage Schedule.jsp";
                         break;
                     case 3:
-                        destPage = "seatList_manager.jsp";
+                        destPage = "homepage_manager.jsp";
                         break;
                     default:
                         break;
