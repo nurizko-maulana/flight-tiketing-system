@@ -102,7 +102,7 @@ public class featuresServlet extends HttpServlet {
                                 con.close();
                                 
                                 request.setAttribute("list", list);
-                                sendPage(request, response, "/seatList_admin.jsp");
+                                sendPage(request, response, "/seatList_manager.jsp");
                         
             }else if (action.equals("ADD")){
                 

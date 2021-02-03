@@ -107,7 +107,7 @@ public class scheduleServlet extends HttpServlet {
                                 con.close();
                                 
                                 request.setAttribute("list", list);
-                                sendPage(request, response, "/seatUpdate_admin.jsp");
+                                sendPage(request, response, "/seatUpdate_manager.jsp");
         } else if(action.equals("APPROVE")){
             int id = Integer.parseInt(request.getParameter("id"));
             int approve=1;
@@ -200,7 +200,7 @@ public class scheduleServlet extends HttpServlet {
                                 con.close();
                                 
                                 request.setAttribute("list", list);
-                                sendPage(request, response, "/scheduleList_admin.jsp");
+                                sendPage(request, response, "/scheduleList_manager.jsp");
         }else if (action.equals("VIEWrejected"))
             {
                         String query = "SELECT * FROM schedule WHERE approve=2";	
@@ -230,7 +230,7 @@ public class scheduleServlet extends HttpServlet {
                                 con.close();
                                 
                                 request.setAttribute("list", list);
-                                sendPage(request, response, "/scheduleList_admin.jsp");
+                                sendPage(request, response, "/scheduleList_manager.jsp");
         }
        
        
