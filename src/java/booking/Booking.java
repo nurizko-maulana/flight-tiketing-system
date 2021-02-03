@@ -7,7 +7,6 @@ package booking;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
 
 /**
  *
@@ -19,10 +18,7 @@ public class Booking implements Serializable {
     String seatCat;
     int baggage;   
     Date booking;
-    String destination_arrival;
-    Time departureTime;
-    Time arrivalTime;
-    Date departureDate;
+    
 
     public int getId() {
         return id;
@@ -63,39 +59,7 @@ public class Booking implements Serializable {
     public void setBooking(Date booking) {
         this.booking = booking;
     }
-   
-
-    public String getDestination_arrival() {
-        return destination_arrival;
-    }
-
-    public void setDestination_arrival(String destination_arrival) {
-        this.destination_arrival = destination_arrival;
-    }
-
-    public Time getDepartureTime() {
-        return departureTime;
-    }
-
-    public void setDepartureTime(Time departureTime) {
-        this.departureTime = departureTime;
-    }
-
-    public Time getArrivalTime() {
-        return arrivalTime;
-    }
-
-    public void setArrivalTime(Time arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
-
-    public Date getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(Date departureDate) {
-        this.departureDate = departureDate;
-    }
+      
     
     
 }
