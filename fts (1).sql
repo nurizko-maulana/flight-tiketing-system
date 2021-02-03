@@ -97,6 +97,27 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `userType`) VALUES
 (3, 'manager', 'manager@gmail.com', 'manager', 3),
 (5, 'Shiva', 'shiva@gmail.com', 'shiva123', 1);
 
+
+
+CREATE TABLE `booking` (
+  `id` int(10) NOT NULL,
+  `numofpas` int(20) NOT NULL,
+  `baggage` int(20) NOT NULL,
+  `seatCat` varchar(25) NOT NULL,
+  `booking` date,
+  `schedule id` int NOT NULL,
+  `users id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+INSERT INTO `booking` (`id`, `numofPas`, `baggage`,`seatCat`, `booking`, `schedule id`, `users id`) VALUES
+(1, 1, 7, 'Business','2019-12-31', 1, 1),
+(2, 1, 10, 'Economy','2020-01-05', 3, 1);
+
+
+
 --
 -- Indexes for dumped tables
 --
@@ -120,6 +141,14 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`,`email`);
 
 --
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`),
+  ADD FOREIGN KEY (`schedule id`) REFERENCES schedule(`id`),
+  ADD FOREIGN KEY (`users id`) REFERENCES users (`id`);  
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -139,6 +168,12 @@ ALTER TABLE `schedule`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+--AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 

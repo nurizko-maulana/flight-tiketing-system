@@ -16,7 +16,7 @@
         <title>SearchFlight</title>
     </head>
     <body>
-           <%  request.getAttribute("flight"); %>
+          
        <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
@@ -26,8 +26,8 @@
       <div class="list-group list-group-flush">
     
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="bookingServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Flights</a>
-        <a href="bookingServlet?action=VIEWdetail"  class="list-group-item list-group-item-action bg-light">Booking History</a>
+        <a href="bookingServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Flight Schedule</a>
+        <a href="bookingServlet?action=VIEWBOOKING"  class="list-group-item list-group-item-action bg-light">Booking History</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
      
       </div>
@@ -44,33 +44,57 @@
 <div class="card">
     <div class="card-body">
         
- <form action="viewFlight.jsp" method="post">
+
  <div class="form-group">
   <label >Departure</label>
     <select class="form-control" name="departure">
-      <option selected><c:out value='${flight.departure}'/></option>
+      <option selected><c:out value='${schedule.destination_arrival}'/></option>
       <option value="jb">Johor Bahru</option>
       <option value="kl">Kuala Lumpur</option>
       <option value="pen">Penang</option>
-      <option value="mal">Malacca</option>
+      <option value="syd">Sydney</option>
+      
     </select>
   </div>
  <div class="form-group">
   <label >Destination</label>
     <select class="form-control" name="destination">
-      <option selected><c:out value='${flight.destination}'/></option>
+      <option selected><c:out value='${schedule.destination_arrival}'/></option>
        <option value="jb">Johor Bahru</option>
-      <option value="kl">Kuala Lumpur</option>
-      <option value="pen">Penang</option>
-      <option value="mal">Malacca</option>
+       <option value="kl">Kuala Lumpur</option>
+       <option value="pen">Penang</option>
+       <option value="syd">Sydney</option>
     </select>
   </div>
  <div class="form-group">
   <label >Departure Date:</label>
-  <input type="date" name="departureDate" min="2021-02-03"/>
+  <input type="date" name="departureDate" min="2021-02-04"/>
  </div>
-  
-  <input type="hidden" name="id" value="${flight.id}">
+  <div class="form-group">
+  <label >Number of Passengers:</label>
+  <input type="text" id="numofPas" name="numofPas"/>
+ </div>     
+ <div class="form-group">
+  <label >Additional Baggage:</label>
+    <select class="form-control" name="baggage">
+        <option selected><c:out value='${booking.baggage}'/></option>
+       <option value="7">7 kg</option>
+       <option value="10">10 kg</option>
+       <option value="15">15 kg</option>
+       <option value="20">20 kg</option>
+    </select>
+  </div>
+       <div class="form-group">
+  <label >Seat Category:</label>
+    <select class="form-control" name="seatCat">
+        <option selected><c:out value='${schedule.seatCat}'/></option>
+       <option value="Economy">Economy</option>
+       <option value="Premium Economy">Premium Economy</option>
+       <option value="Business">Business</option>
+       <option value="First Class">First Class</option>
+    </select>
+  </div>
+  <input type="hidden" name="id" value="${schedule.id}"/>
   <button type="submit" class="btn btn-primary">Search</button>
 </form>
             </div>

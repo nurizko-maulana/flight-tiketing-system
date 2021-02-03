@@ -69,13 +69,12 @@ public class UserServlet extends HttpServlet {
                 
                 ArrayList list = new ArrayList();
                 String action = request.getParameter("action");
-                
-                          
-        try { 
-            Class.forName(driver);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                 
+            try {
+                Class.forName(driver);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 
                 try {
                     
@@ -89,7 +88,7 @@ public class UserServlet extends HttpServlet {
 			while(resultSet.next()) {
 				
                                 User user = new User();
-                                user.setId(resultSet.getInt(1));
+                                user.setId(resultSet.getInt(1));				
 				user.setUsername(resultSet.getString(2));
 				user.setEmail(resultSet.getString(3));
 				user.setPassword(resultSet.getString(4));
@@ -105,21 +104,23 @@ public class UserServlet extends HttpServlet {
                                 sendPage(request, response, "/ManageUser.jsp");
                                             
                     }else if(action.equals ("DELETE")){
+                        
                         int id = Integer.parseInt(request.getParameter("id"));
-                        String query = "DELETE FROM users WHERE id=" +id;
-                        Connection con = DriverManager.getConnection(url, userName,passWord);
-                        PreparedStatement st = con.prepareStatement(query);
-                       
-                                            
-                        st.executeUpdate();
+                
+                String query = "DELETE FROM users WHERE id="+id;
+                Connection con = DriverManager.getConnection(url, userName, passWord);
+                PreparedStatement st= con.prepareStatement(query);
+                
+                st.executeUpdate();
+                
+                st.close(); 
+                con.close();
+                
+                RequestDispatcher rd = request.getRequestDispatcher("UserServlet?action=VIEW");
+                rd.forward(request,response);
+            }
                         
-                        st.close();
-                        con.close();
-                        
-                        RequestDispatcher rd = request.getRequestDispatcher("UserServlet?action=VIEW");
-                        rd.forward(request, response);
-                        
-                    }
+                    
                 }  catch (SQLException e) {
                     e.printStackTrace();
                 }

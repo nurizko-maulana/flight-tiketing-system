@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     
@@ -13,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="simple-sidebar.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Booking Details</title>
+        <title>Flight Schedule</title>
     </head>
     
     
@@ -27,13 +28,20 @@
           <div class="list-group list-group-flush">
 
             <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
-            <a href="flightSchedule.jsp" class="list-group-item list-group-item-action bg-light">Flight Schedule</a>
-            <a href="bookingDetail.jsp" class="list-group-item list-group-item-action bg-primary active">Booking Details</a>
-            
-          </div>
+            <a href="bookingServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Flight Schedule</a>
+            <a href="bookingServlet?action=VIEWBOOKING" class="list-group-item list-group-item-action bg-light">Booking History</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
+         </div>
         </div>
         <!-- /#sidebar-wrapper -->
-    
+        <br></br>
+              <center>
+               <h3>List Of Flights</h3>
+               <br></br>   
+            
+                     <div>
+        <a class="button" href="SearchFlight.jsp">Search for Flights?</a>
+  </div>
      <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container-fluid">
@@ -49,48 +57,26 @@
 <!--Table-->
 <table class="table table-bordered">
   <thead>
-    <tr>
-      <th scope="col">No</th>
+    <tr>     
       <th scope="col">Flight No</th>
-      <th scope="col">Departure</th>
-      <th scope="col">Destination</th>
+      <th scope="col">Destination-Arrival</th>      
       <th scope="col">Departure Date</th>
       <th scope="col">Departure Time</th>
-      <th scope="col">Arrival Time</th>
-      <th scope="col">Duration</th>
-      <th scope="col">Economic Price</th>
-      <th scope="col">Business Price</th>
-      <th scope="col">First Class Price</th>
+      <th scope="col">Arrival Time</th>      
+      <th scope="col">Price</th>     
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-  <th scope="row">1</th>
-  <td>AK6412</td>
-  <td>Penang</td>
-  <td>Johor Bahru</td>
-  <td>2021-02-04</td>
-  <td>0910hrs</td>
-  <td>1020hrs</td>
-  <td>1hr10min</td>
-  <td>RM 80</td>
-  <td>RM 100</td>
-  <td>RM 120</td>
-  <td> <a href="checkout" class="btn btn-info">Book</a> </td>    
-    <c:forEach items="${list}" var="Flight" varStatus="loop">
+     <c:forEach items="${list}" var="schedule" varStatus="loop">
     <tr>
-      <td><c:out value="${flight.id}" /></td> 
-      <td><c:out value="${flight.flightNo}" /></td>
-      <td><c:out value="${flight.departure}" /></td> 
-      <td><c:out value="${flight.destination}" /></td>
-      <td><c:out value="${flight.departureDate}" /></td>
-      <td><c:out value="${flight.departureTime}" /></td>
-      <td><c:out value="${flight.arrivalTime}" /></td>
-      <td><c:out value="${flight.duration}}" /></td>
-      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${flight.economicPrice}" /></td>
-      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${flight.businessPrice}" /></td>
-      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${flight.firstclassPrice}" /></td>
-       <td> <a href="checkout" class="btn btn-info">Book</a> </td>
+      <td><c:out value="${schedule.plane_id}" /></td> 
+      <td><c:out value="${schedule.destination_arrival}" /></td>
+      <td><c:out value="${schedule.departureDate}" /></td> 
+      <td><c:out value="${schedule.departureTime}" /></td> 
+      <td><c:out value="${schedule.arrivalTime}" /></td>   
+      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${schedule.price}" /></td>
+      <td> <a href="bookingServlet?action=VIEWBOOKING">Book</a> </td>
     </tr>
      </c:forEach>
   </tbody>

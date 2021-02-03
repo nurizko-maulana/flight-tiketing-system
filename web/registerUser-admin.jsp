@@ -76,11 +76,20 @@
               <div class="form-group">
                      <label class="text-left">User Role</label><br>
                 <select class="form-control" name="userType">
+                    <option value="1">Customer</option>
                     <option value="2">Admin</option>
                     <option selected value="3">Manager</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+              <button type="submit" class="btn btn-primary btn-block" onclick="myfunction()">Submit</button>
+              
+              <script>
+                  function myfunction()
+                  {
+                      alert("User Registered Successfully!");
+                  }                  
+              </script>                 
+                         
             </form>
           </div>
           </div>
