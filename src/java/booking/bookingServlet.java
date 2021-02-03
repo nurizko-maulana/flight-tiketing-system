@@ -87,7 +87,7 @@ public class bookingServlet extends HttpServlet {
                 
                 if (action.equals("VIEW"))                    
                 {
-                     String query = "SELECT * FROM schedule WHERE departureDate=CURDATE()";
+                     String query = "SELECT * FROM `schedule` WHERE departureDate BETWEEN CURDATE() and '2021-12-12' AND approve=1";
                      Connection con = DriverManager.getConnection(url, userName,passWord);
                      Statement st = con.createStatement();
                      ResultSet resultSet = st.executeQuery(query);
@@ -116,7 +116,7 @@ public class bookingServlet extends HttpServlet {
                                
                 } else if (action.equals("VIEWBOOKING")) {
                     
-                    String query = "SELECT * from schedule RIGHT JOIN booking ON schedule.id=booking.id ";                              
+                    String query = "SELECT * FROM schedule INNER JOIN booking ON booking.id = booking.schedule_id ORDER BY booking.id";                              
                     Connection con = DriverManager.getConnection(url, userName, passWord);
                     Statement st = con.createStatement();
                     ResultSet resultSet = st.executeQuery(query);
