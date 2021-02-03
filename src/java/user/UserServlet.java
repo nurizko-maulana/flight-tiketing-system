@@ -87,7 +87,7 @@ public class UserServlet extends HttpServlet {
 				user.setUsername(resultSet.getString(3));
 				user.setEmail(resultSet.getString(4));
 				user.setPassword(resultSet.getString(5));
-                                user.setUserType(resultSet.getString(6));
+                                user.setUserType(resultSet.getInt(6));
                                 list.add(user);
                             
 			}
@@ -159,7 +159,7 @@ public class UserServlet extends HttpServlet {
 				user.setUsername(resultSet.getString(3));
 				user.setEmail(resultSet.getString(4));
 				user.setPassword(resultSet.getString(5));
-                                user.setUserType(resultSet.getString(6));
+                                user.setUserType(resultSet.getInt(6));
                                 
 			}
                             
