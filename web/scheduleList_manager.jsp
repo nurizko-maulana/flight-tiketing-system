@@ -31,7 +31,7 @@
       <div class="list-group list-group-flush">
     
        
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                    <a href="profileServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Profile</a>
                     <a href="featuresServlet?action=VIEW" class="list-group-item list-group-item-action bg-light">Seat Feature</a>
                     <a href="scheduleServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active" >Schedule Updates</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light">Plane Details</a>

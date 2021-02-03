@@ -3,16 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/seatList_manager.jsp</file>
             <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/registerUser-admin.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/bean/User.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/user/Login.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/scheduleList_admin.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/plane/planeDAO.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/register.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/user/UserServlet.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/booking/bookingServlet.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/user/registerDAO.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/user/regServlet.java</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/plane/PlaneServlet.java</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/scheduleList_manager.jsp</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/adminPlaneList.jsp</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/ManageUser.jsp</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/features-form.jsp</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/seatUpdate_manager.jsp</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/features/featuresServlet.java</file>
+            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/editFeatures-form.jsp</file>
         </group>
     </open-files>
 </project-private>
