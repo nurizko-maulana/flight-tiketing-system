@@ -33,15 +33,15 @@ public class Login extends HttpServlet {
          
         try {
             User user = userDao.checkLogin(username, password);
-            String destPage = "index.html";
+            String destPage = "login.jsp";
              
             if (user != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                System.out.println(user.getUsername());
-                System.out.println(user.getUserType());
-                System.out.println(user.getEmail());
-                int type = 1;
+                session.setAttribute("isValidate", true);
+                System.out.println("USERNAME : " + user.getUsername());
+                System.out.println("USER TYPE : " + user.getUserType());
+                System.out.println("EMAIL : " + user.getEmail());
                 switch (user.getUserType()) {
                     case 1:
                         destPage = "flightSchedule.jsp";

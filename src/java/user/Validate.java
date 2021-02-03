@@ -30,8 +30,9 @@ public class Validate {
  
         if (result.next()) {
             user = new User();
+            user.setId(result.getInt("id"));
             user.setUsername(result.getString("username"));
-            user.setUsername(result.getString("userType"));
+            user.setUserType(Integer.parseInt(result.getString("userType")));
             user.setEmail(email);
         }
  
