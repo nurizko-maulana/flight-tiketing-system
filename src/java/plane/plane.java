@@ -97,7 +97,35 @@ public class plane extends HttpServlet {
                 request.setAttribute("list", list);
                 sendPage(request, response, "/adminPlaneList.jsp");
 
-            } else if (action.equals("CREATE")) {
+            } 
+            
+            else if (action.equals("EDIT")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                String query = "SELECT * FROM planes WHERE id=" + id;
+                Connection con = DriverManager.getConnection(url, userName, passWord);
+                Statement st = con.createStatement();
+                ResultSet resultSet = st.executeQuery(query);
+                Plane plane = new Plane();
+
+                while (resultSet.next()) {
+
+                    
+                    plane.setId(resultSet.getInt("id"));
+                    plane.setCapacity(resultSet.getInt("capacity"));
+                    plane.setFeature_id(resultSet.getInt("feature_id"));
+                    plane.setModel(resultSet.getString("model"));
+                    plane.setStatus(resultSet.getString("status"));
+                    plane.setYear(resultSet.getInt("year"));
+                }
+
+                st.close();
+                con.close();
+
+                request.setAttribute("plane", plane);
+                sendPage(request, response, "/adminPlaneList.jsp");
+
+            }
+            else if (action.equals("CREATE")) {
 
                 String query = "SELECT * FROM features";
                 Connection con = DriverManager.getConnection(url, userName, passWord);
@@ -171,36 +199,37 @@ public class plane extends HttpServlet {
 
                 if (status.equals("ACTIVE")) {
                     st.setString(1, "MAINTENANCE");
+                    st.executeUpdate();
 
                 } else if (status.equals("MAINTENANCE")) {
                     st.setString(1, "ACTIVE");
+                    st.executeUpdate();
                 }
 
                 st.close();
                 con.close();
 
-//                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
-//                rd.include(request, response);
+                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
+                rd.include(request, response);
+                
             } else if (action.equals("UPDATE")) {
 
                 int id = Integer.parseInt(request.getParameter("id"));
-                String seatCat = request.getParameter("seatCat");
-                double seatWidth = Double.parseDouble(request.getParameter("seatWidth"));
-                String seatType = request.getParameter("seatType");
-                String videoType = request.getParameter("videoType");
-                String powerType = request.getParameter("powerType");
-                String wifi = request.getParameter("wifi");
+                String model = request.getParameter("model");
+                int year = Integer.parseInt(request.getParameter("year"));
+                int capacity = Integer.parseInt(request.getParameter("capacity"));
+                int feature_id = Integer.parseInt(request.getParameter("feature_id"));
+                
 
-                String query = "UPDATE features SET seatCat= ?, seatWidth =?, seatType=?, videoType=?, powerType=?, wifi=? WHERE id=" + id;
+                String query = "UPDATE plane SET model= ?, year =?, capacity=?, feature_id=? WHERE id=" + id;
                 Connection con = DriverManager.getConnection(url, userName, passWord);
                 PreparedStatement st = con.prepareStatement(query);
 
-                st.setString(1, seatCat);
-                st.setDouble(2, seatWidth);
-                st.setString(3, seatType);
-                st.setString(4, videoType);
-                st.setString(5, powerType);
-                st.setString(6, wifi);
+                st.setString(1, model);
+                st.setInt(2, year);
+                st.setInt(3, capacity);
+                st.setInt(4, feature_id);
+                
 
                 int insertStatus = 0;
                 st.executeUpdate();

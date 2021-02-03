@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <label >Feature</label>
                                     <select class="form-control" name="feature_id">
-                                        <c:forEach items="${list}" var="feature" varStatus="loop">
+                                        <c:forEach items="${feature}" var="feature" varStatus="loop">
                                             <tr>
                                                 <option value="${feature.id}">${feature.id}</option>
                                             </tr>
