@@ -17,7 +17,7 @@ public class User implements Serializable{
     String username;
     String email;
     String password;
-    String userType;
+    int userType;
 
     public User() {
     }
@@ -63,28 +63,11 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public String getUserType() {
+    public int getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(int userType) {
         this.userType = userType;
     }
-
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
-    
 }

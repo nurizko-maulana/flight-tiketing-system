@@ -40,7 +40,7 @@ public class registerDAO  {
         st.setString(1,user.getUsername());
         st.setString(2,user.getEmail());
         st.setString(3, user.getPassword());
-        st.setString(4, user.getUserType());
+        st.setInt(4, user.getUserType());
         
         int insertStatus=0; 
        
