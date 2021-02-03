@@ -5,7 +5,8 @@
  */
 package booking;
 
-import bean.booking;
+
+import booking.Booking;
 import bean.Schedule;
 import bean.Features;
 import bean.User;
@@ -86,7 +87,7 @@ public class bookingServlet extends HttpServlet {
                 
                 if (action.equals("VIEW"))                    
                 {
-                     String query = "SELECT * FROM schedule";
+                     String query = "SELECT * FROM `schedule` WHERE departureDate BETWEEN CURDATE() and '2021-12-12' AND approve=1";
                      Connection con = DriverManager.getConnection(url, userName,passWord);
                      Statement st = con.createStatement();
                      ResultSet resultSet = st.executeQuery(query);
@@ -115,7 +116,7 @@ public class bookingServlet extends HttpServlet {
                                
                 } else if (action.equals("VIEWBOOKING")) {
                     
-                    String query = "SELECT * from schedule";                              
+                    String query = "SELECT * FROM schedule INNER JOIN booking ON booking.id = booking.schedule_id ORDER BY booking.id";                              
                     Connection con = DriverManager.getConnection(url, userName, passWord);
                     Statement st = con.createStatement();
                     ResultSet resultSet = st.executeQuery(query);
@@ -123,13 +124,15 @@ public class bookingServlet extends HttpServlet {
                                       
                     while(resultSet.next()) {
                         
-                        Schedule schedule = new Schedule();                                        
+                        Booking booking = new Booking();   
+                        Schedule schedule = new Schedule();
                         schedule.setDestination_arrival(resultSet.getString("destination_arrival"));
                         schedule.setDepartureDate(resultSet.getDate("departureDate"));
                         schedule.setDepartureTime(resultSet.getTime("departureTime"));
                         schedule.setArrivalTime(resultSet.getTime("arrivalTime"));
-                        schedule.setSeatCat(resultSet.getString("seatCat"));                                           
-                        list.add(schedule);     
+                        booking.setBooking(resultSet.getDate("booking"));
+                        booking.setSeatCat(resultSet.getString("seatCat"));                                           
+                        list.add(booking);     
                         
                     }                  
                     
