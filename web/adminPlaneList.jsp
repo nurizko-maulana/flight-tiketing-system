@@ -67,6 +67,7 @@
                                         <th>Year</th>
                                         <th>Capacity</th>
                                         <th>Feature</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -81,7 +82,8 @@
                                     <td><c:out value="${plane.year}" /></td>
                                     <td><c:out value="${plane.capacity}" /></td>
                                     <td><c:out value="${plane.feature_id}" /></td>
-                                    <td> <a href="plane?action=EDIT&id=${plane.id}" class="btn btn-warning">Edit</a>  <a href="plane?action=DELETE&id=${plane.id}" class="btn btn-danger">Delete</a> </td>
+                                    <td><c:out value="${plane.status}" /></td>
+                                    <td> <a href="plane?action=EDIT&id=${plane.id}" class="btn btn-warning">Edit</a>  <a href="plane?action=DELETE&id=${plane.id}" class="btn btn-danger">Delete</a> <a href="plane?action=ACTIVATE&id=${plane.id}&status=${plane.status}" class="btn btn-secondary">ACTIVATE/DEACTIVATE</a> </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
