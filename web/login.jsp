@@ -62,7 +62,7 @@
             <div class="col p-5 " >
                 <form action="login" method="post" id="rightHalf2">
                     <div class="form-group">
-                        <label class="text-left">Username</label>
+                        <label class="text-left">Email</label>
                         <input type="email" class="form-control" id="username" name="email" placeholder="E-mail" required>
                     </div>
                     <div class="form-group">
