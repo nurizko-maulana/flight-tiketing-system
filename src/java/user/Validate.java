@@ -15,7 +15,7 @@ public class Validate {
             ClassNotFoundException {
         String jdbcURL = "jdbc:mysql://localhost:3306/fts";
         String dbUser = "root";
-        String dbPassword = "root";
+        String dbPassword = "";
  
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
