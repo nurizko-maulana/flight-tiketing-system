@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -30,7 +31,7 @@
                 <div class="list-group list-group-flush">
 
                     <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
-                    <a href="adminPlaneList.jsp" class="list-group-item list-group-item-action bg-primary active">Plane</a>
+                    <a href="PlaneServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Plane</a>
                     <a href="statistic.jsp" class="list-group-item list-group-item-action bg-light">Statistic</a>
 
                 </div>
@@ -62,34 +63,24 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>model</th>
-                                        <th>year</th>
-                                        <th>capacity</th>
-                                        <th>feature</th>
-                                        <th>action</th>
-
-
+                                        <th>Model</th>
+                                        <th>Year</th>
+                                        <th>Capacity</th>
+                                        <th>Feature</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <!--Table head-->
                                 <!--Table body-->
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Boing 777</td>
-                                        <td>2005</td>
-                                        <td>200</td>
-                                        <td>2</td>
-                                        <td><a href="adminPlaneList.jsp"><button type="button" class="btn btn-outline-dark">edit</button><a/></td>
-                                        </td>
-                                    </tr>
+                                 
                                 <c:forEach items="${list}" var="plane" varStatus="loop">
                                     <tr>
                                     <td><c:out value="${plane.id}" /></td> 
                                     <td><c:out value="${plane.model}" /></td> 
                                     <td><c:out value="${plane.year}" /></td>
                                     <td><c:out value="${plane.capacity}" /></td>
-                                    <td><c:out value="${plane.feature}" /></td>
+                                    <td><c:out value="${plane.feature_id}" /></td>
                                     <td> <a href="plane?action=EDIT&id=${plane.id}" class="btn btn-warning">Edit</a>  <a href="plane?action=DELETE&id=${plane.id}" class="btn btn-danger">Delete</a> </td>
                                     </tr>
                                 </c:forEach>

@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author duncanleo
  */
-@WebServlet(name = "PlaneServlet", urlPatterns = {"/plane"})
+@WebServlet(name = "PlaneServlet", urlPatterns = {"/PlaneServlet"})
 public class PlaneServlet extends HttpServlet {
 
     void sendPage(HttpServletRequest req, HttpServletResponse res, String fileName) throws ServletException, IOException {
