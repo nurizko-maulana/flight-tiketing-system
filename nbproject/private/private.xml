@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/seatList_manager.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/registerUser-admin.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/plane/PlaneServlet.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/scheduleList_manager.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/adminPlaneList.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/ManageUser.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/features-form.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/seatUpdate_manager.jsp</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/src/java/features/featuresServlet.java</file>
-            <file>file:/C:/Users/thattshini/Documents/NetBeansProjects/flight-tiketing-system/web/editFeatures-form.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/fts/web/SearchFlight.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/fts/src/java/booking/bookingServlet.java</file>
+            <file>file:/C:/Users/USER/Desktop/fts/web/viewFlight.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/fts/web/adminPlaneAdd.jsp</file>
         </group>
     </open-files>
 </project-private>

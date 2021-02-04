@@ -18,6 +18,43 @@ public class Booking implements Serializable {
     String seatCat;
     int baggage;   
     Date booking;
+    String nameofpay;
+    String cardnum;
+    String expiry;
+    String cvv;
+
+    public String getNameofpay() {
+        return nameofpay;
+    }
+
+    public void setNameofpay(String nameofpay) {
+        this.nameofpay = nameofpay;
+    }
+
+    public String getCardnum() {
+        return cardnum;
+    }
+
+    public void setCardnum(String cardnum) {
+        this.cardnum = cardnum;
+    }
+
+    public String getExpiry() {
+        return expiry;
+    }
+
+    public void setExpiry(String expiry) {
+        this.expiry = expiry;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+    
     
 
     public int getId() {

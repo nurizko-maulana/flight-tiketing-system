@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `features`
 --
-
+DROP TABLE IF EXISTS `features`;
 CREATE TABLE `features` (
   `id` int(20) NOT NULL,
   `seatCat` varchar(20) NOT NULL,
@@ -50,7 +50,7 @@ INSERT INTO `features` (`id`, `seatCat`, `seatWidth`, `seatType`, `videoType`, `
 --
 -- Table structure for table `schedule`
 --
-
+DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE `schedule` (
   `id` int(10) NOT NULL,
   `destination_arrival` varchar(50) NOT NULL,
@@ -78,7 +78,7 @@ INSERT INTO `schedule` (`id`, `destination_arrival`, `departureTime`, `arrivalTi
 --
 -- Table structure for table `users`
 --
-
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(10) NOT NULL,
   `username` varchar(20) NOT NULL,
@@ -105,16 +105,20 @@ CREATE TABLE `booking` (
   `baggage` int(20) NOT NULL,
   `seatCat` varchar(25) NOT NULL,
   `booking` date,
+  `nameofpay` varchar (50) NOT NULL,
+  `cardnum` varchar (20) NOT NULL,
+  `expiry` varchar (5) NOT NULL,
+  `cvv` varchar (3) NOT NULL,
   `schedule id` int NOT NULL,
   `users id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `booking`
 --
-INSERT INTO `booking` (`id`, `numofPas`, `baggage`,`seatCat`, `booking`, `schedule id`, `users id`) VALUES
-(1, 1, 7, 'Business','2019-12-31', 1, 1),
-(2, 1, 10, 'Economy','2020-01-05', 3, 1);
+INSERT INTO `booking` (`id`, `numofPas`, `baggage`,`seatCat`, `booking`, `nameofpay`, `cardnum`, `expiry`, `cvv` ,`schedule id`, `users id`) VALUES
+(1, 1, 7, 'Business','2019-12-31', 'James Smith', '1111-2222-3333-4444', '03/23', '352', 1, 1),
+(2, 1, 10, 'Economy','2020-01-05', 'Jaden Long', '0000-1111-3333-5555','02/22','456', 3, 1);
 
 
 

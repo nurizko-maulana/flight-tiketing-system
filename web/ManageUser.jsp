@@ -62,15 +62,30 @@
                              <td><c:out value="${user.email}" /></td> 
                              <td><c:out value="${user.password}" /></td>
                              <td><c:out value="${user.userType}" /></td> 
-                               <td> <a href="UserServlet?action=DELETE&id=${user.id}" class="btn btn-info">Delete</a> </td>
-                             </tr>
-                             </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- /#page-content-wrapper -->
+                                <td>< <a href="UserServlet?action=DELETE&id=${users.id}"onclick="myfunction()">Delete</a></td>
+    </tr>
+    <p id="msg"></p>
+ 
+     </c:forEach>
 
+  </tbody>
+</table>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+       <script>
+        function myfunction(){
+           var txt;
+  if (confirm("Confirm Delete User Details?")) { 
+   txt = "User details deleted!";
+  
+  } else {
+    txt = "User details Not deleted!";
+  }
+  document.getElementById("msg").innerHTML = txt;
+} 
+        }
+    </script>
 
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

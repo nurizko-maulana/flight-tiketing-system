@@ -84,8 +84,61 @@
                             $('table').DataTable();
                         </script>
 
+            <a href="profile.jsp" class="list-group-item list-group-item-action bg-light">Profile</a>
+            <a href="bookingServlet?action=VIEW" class="list-group-item list-group-item-action bg-primary active">Flight Schedule</a>
+            <a href="bookingServlet?action=VIEWBOOKING" class="list-group-item list-group-item-action bg-light">Booking History</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Logout</a>
+         </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <br></br>
+              <center>
+               <h3>List Of Flights</h3>
+               <br></br>   
+            
+     
+     <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+          
+          <div class="dropdown float-right my-5 mr-5  ">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    USER
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Logout</a>
+  </div>
+</div>
+<!--Table-->
+<table class="table table-bordered">
+  <thead>
+    <tr>     
+      <th scope="col">Flight No</th>
+      <th scope="col">Destination-Arrival</th>      
+      <th scope="col">Departure Date</th>
+      <th scope="col">Departure Time</th>
+      <th scope="col">Arrival Time</th>      
+      <th scope="col">Price</th>     
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+     <c:forEach items="${list}" var="schedule" varStatus="loop">
+    <tr>
+      <td><c:out value="${schedule.plane_id}" /></td> 
+      <td><c:out value="${schedule.destination_arrival}" /></td>
+      <td><c:out value="${schedule.departureDate}" /></td> 
+      <td><c:out value="${schedule.departureTime}" /></td> 
+      <td><c:out value="${schedule.arrivalTime}" /></td>   
+      <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${schedule.price}" /></td>
+      <td> <a href="checkout.jsp">Book</a> </td>
+    </tr>
+     </c:forEach>
+  </tbody>
+</table>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
 
-                        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-                        </html>
