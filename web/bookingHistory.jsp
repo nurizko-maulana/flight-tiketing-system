@@ -70,7 +70,7 @@
       <td><c:out value="${booking.baggage}" /></td> 
       <td><c:out value="${booking.seatCat}"/></td>
       <td><c:out value="${booking.booking}"/></td> 
-      <td><a href="bookingServlet?action=VIEWDetail">View Details</a></td>
+      <td><a href="bookingServlet?action=VIEWDETAIL">View Details</a></td>
       </tr>
      </c:forEach>
   </tbody>

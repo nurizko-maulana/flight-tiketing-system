@@ -62,7 +62,7 @@
     </tr>
   </thead>
   <tbody> 
-    <c:forEach items="${list}" var="booking" varStatus="loop">
+    <c:forEach items="${list}" var="schedule" varStatus="loop">
     <tr>             
       <td><c:out value="${schedule.plane_id}" /></td> 
       <td><c:out value="${schedule.destination_arrival}" /></td>
