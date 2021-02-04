@@ -44,13 +44,13 @@ public class Login extends HttpServlet {
                 System.out.println("EMAIL : " + user.getEmail());
                 switch (user.getUserType()) {
                     case 1:
-                        destPage = "flightSchedule.jsp";
+                        destPage = "bookingServlet?action=VIEW";
                         break;
                     case 2:
-                        destPage = "Manage Schedule.jsp";
+                        destPage = "/planes?action=VIEW";
                         break;
                     case 3:
-                        destPage = "seatList_manager.jsp";
+                        destPage = "homepage_manager.jsp";
                         break;
                     default:
                         break;

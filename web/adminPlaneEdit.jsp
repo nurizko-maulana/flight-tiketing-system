@@ -62,11 +62,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label >Year</label>
-                                    <input type="number" min="1950" max="2021" class="form-control" name="year" required value="">
+                                    <input type="number" min="1950" max="2021" class="form-control" name="year" required value="${plane.year}">
                                 </div>
                                 <div class="form-group">
                                     <label >Capacity</label>
-                                    <input type="number" min="1" max="1000" class="form-control" name="capacity" required value="">
+                                    <input type="number" min="1" max="1000" class="form-control" name="capacity" required value="${plane.capacity}">
                                 </div>
                                 <div class="form-group">
                                     <label >Feature</label>

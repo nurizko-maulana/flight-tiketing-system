@@ -1,5 +1,6 @@
 package plane;
 
+import bean.Features;
 import bean.Plane;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -96,25 +97,68 @@ public class plane extends HttpServlet {
                 request.setAttribute("list", list);
                 sendPage(request, response, "/adminPlaneList.jsp");
 
-            }
+            } 
             
-            if (action.equals("VIEW")) {
-                String query = "SELECT * FROM planes";
+            else if (action.equals("EDIT")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                String query = "SELECT * FROM planes WHERE id=" + id;
                 Connection con = DriverManager.getConnection(url, userName, passWord);
                 Statement st = con.createStatement();
                 ResultSet resultSet = st.executeQuery(query);
+                Plane plane = new Plane();
 
                 while (resultSet.next()) {
-
-                    Plane plane = new Plane();
                     plane.setId(resultSet.getInt("id"));
                     plane.setCapacity(resultSet.getInt("capacity"));
                     plane.setFeature_id(resultSet.getInt("feature_id"));
                     plane.setModel(resultSet.getString("model"));
                     plane.setStatus(resultSet.getString("status"));
                     plane.setYear(resultSet.getInt("year"));
+                }
+                
+                String query2 = "SELECT * FROM features";
+                ResultSet resultSetFeature = st.executeQuery(query2);
+                
+                while (resultSetFeature.next()) {
 
-                    list.add(plane);
+                    Features features = new Features();
+                    features.setId(resultSetFeature.getInt(1));
+                    features.setSeatCat(resultSetFeature.getString(2));
+                    features.setSeatWidth(resultSetFeature.getDouble(3));
+                    features.setSeatType(resultSetFeature.getString(4));
+                    features.setVideoType(resultSetFeature.getString(5));
+                    features.setPowerType(resultSetFeature.getString(6));
+                    features.setWifi(resultSetFeature.getString(7));
+                    list.add(features);
+
+                }
+                
+                st.close();
+                con.close();
+                
+                request.setAttribute("plane", plane);
+                request.setAttribute("list", list);
+                sendPage(request, response, "/adminPlaneEdit.jsp");
+
+            }
+            else if (action.equals("CREATE")) {
+
+                String query = "SELECT * FROM features";
+                Connection con = DriverManager.getConnection(url, userName, passWord);
+                Statement st = con.createStatement();
+                ResultSet resultSet = st.executeQuery(query);
+
+                while (resultSet.next()) {
+
+                    Features features = new Features();
+                    features.setId(resultSet.getInt(1));
+                    features.setSeatCat(resultSet.getString(2));
+                    features.setSeatWidth(resultSet.getDouble(3));
+                    features.setSeatType(resultSet.getString(4));
+                    features.setVideoType(resultSet.getString(5));
+                    features.setPowerType(resultSet.getString(6));
+                    features.setWifi(resultSet.getString(7));
+                    list.add(features);
 
                 }
 
@@ -122,74 +166,44 @@ public class plane extends HttpServlet {
                 con.close();
 
                 request.setAttribute("list", list);
-                sendPage(request, response, "/adminPlaneList.jsp");
-
-            }
-            
-            else if (action.equals("CREATE")) {
-
-                String query = "INSERT INTO planes( model, year, capacity, feature_id ) VALUES(?, ?, ?, ?)";
-                Connection con = DriverManager.getConnection(url, userName, passWord);
-                PreparedStatement st = con.prepareStatement(query);
-
-//                try {
-                String model = request.getParameter("model");
-                int year = Integer.parseInt(request.getParameter("year"));
-                int capacity = Integer.parseInt(request.getParameter("capacity"));
-                int feature_id = Integer.parseInt(request.getParameter("feature_id"));
-//                } catch (NumberFormatException e) {
-//                    System.out.println("We can catch the NumberFormatException");
-//                }
-
-                st.setString(1, model);
-                st.setInt(2, year);
-                st.setInt(3, capacity);
-                st.setInt(4, feature_id);
-
-                int insertStatus = 0;
-                st.executeUpdate();
-
-                System.out.println(insertStatus + "row affected");
-
-                st.close();
-                con.close();
-
-                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
+                RequestDispatcher rd = request.getRequestDispatcher("adminPlaneAdd.jsp");
                 rd.forward(request, response);
-            } else if (action.equals("ADD")) {
-
-                String query = "INSERT INTO planes( model, year, capacity, feature_id ) VALUES(?, ?, ?, ?)";
-                Connection con = DriverManager.getConnection(url, userName, passWord);
-                PreparedStatement st = con.prepareStatement(query);
-
-//                try {
-                String model = request.getParameter("model");
-                int year = Integer.parseInt(request.getParameter("year"));
-                int capacity = Integer.parseInt(request.getParameter("capacity"));
-                int feature_id = Integer.parseInt(request.getParameter("feature_id"));
-//                } catch (NumberFormatException e) {
-//                    System.out.println("We can catch the NumberFormatException");
-//                }
-
-                st.setString(1, model);
-                st.setInt(2, year);
-                st.setInt(3, capacity);
-                st.setInt(4, feature_id);
-
-                int insertStatus = 0;
-                st.executeUpdate();
-
-                System.out.println(insertStatus + "row affected");
-
-                st.close();
-                con.close();
-
-                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
-                rd.forward(request, response);
+                
             } 
             
             
-            else if (action.equals("ACTIVATE")) {
+            
+            else if (action.equals("ADD")) {
+
+                String query = "INSERT INTO planes( model, year, capacity, feature_id ) VALUES(?, ?, ?, ?)";
+                Connection con = DriverManager.getConnection(url, userName, passWord);
+                PreparedStatement st = con.prepareStatement(query);
+
+//                try {
+                String model = request.getParameter("model");
+                int year = Integer.parseInt(request.getParameter("year"));
+                int capacity = Integer.parseInt(request.getParameter("capacity"));
+                int feature_id = Integer.parseInt(request.getParameter("feature_id"));
+//                } catch (NumberFormatException e) {
+//                    System.out.println("We can catch the NumberFormatException");
+//                }
+
+                st.setString(1, model);
+                st.setInt(2, year);
+                st.setInt(3, capacity);
+                st.setInt(4, feature_id);
+
+                int insertStatus = 0;
+                st.executeUpdate();
+
+                System.out.println(insertStatus + "row affected");
+
+                st.close();
+                con.close();
+
+                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
+                rd.forward(request, response);
+            } else if (action.equals("ACTIVATE")) {
 
                 int id = Integer.parseInt(request.getParameter("id"));
                 String status = request.getParameter("status");
@@ -197,40 +211,41 @@ public class plane extends HttpServlet {
                 Connection con = DriverManager.getConnection(url, userName, passWord);
                 PreparedStatement st = con.prepareStatement(query);
                 Plane plane = new Plane();
+                System.out.println("STATUS TYPE " + status);
 
                 if (status.equals("ACTIVE")) {
                     st.setString(1, "MAINTENANCE");
+                    st.executeUpdate();
 
-                }else if (status.equals("MAINTENANCE")) {
+                } else if (status.equals("MAINTENANCE")) {
                     st.setString(1, "ACTIVE");
+                    st.executeUpdate();
                 }
 
                 st.close();
                 con.close();
 
                 RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
-                rd.forward(request, response);
-
+                rd.include(request, response);
+                
             } else if (action.equals("UPDATE")) {
 
                 int id = Integer.parseInt(request.getParameter("id"));
-                String seatCat = request.getParameter("seatCat");
-                double seatWidth = Double.parseDouble(request.getParameter("seatWidth"));
-                String seatType = request.getParameter("seatType");
-                String videoType = request.getParameter("videoType");
-                String powerType = request.getParameter("powerType");
-                String wifi = request.getParameter("wifi");
+                String model = request.getParameter("model");
+                int year = Integer.parseInt(request.getParameter("year"));
+                int capacity = Integer.parseInt(request.getParameter("capacity"));
+                int feature_id = Integer.parseInt(request.getParameter("feature_id"));
+                
 
-                String query = "UPDATE features SET seatCat= ?, seatWidth =?, seatType=?, videoType=?, powerType=?, wifi=? WHERE id=" + id;
+                String query = "UPDATE plane SET model= ?, year =?, capacity=?, feature_id=? WHERE id=" + id;
                 Connection con = DriverManager.getConnection(url, userName, passWord);
                 PreparedStatement st = con.prepareStatement(query);
 
-                st.setString(1, seatCat);
-                st.setDouble(2, seatWidth);
-                st.setString(3, seatType);
-                st.setString(4, videoType);
-                st.setString(5, powerType);
-                st.setString(6, wifi);
+                st.setString(1, model);
+                st.setInt(2, year);
+                st.setInt(3, capacity);
+                st.setInt(4, feature_id);
+                
 
                 int insertStatus = 0;
                 st.executeUpdate();
@@ -247,7 +262,7 @@ public class plane extends HttpServlet {
 
                 int id = Integer.parseInt(request.getParameter("id"));
 
-                String query = "DELETE FROM features WHERE id=" + id;
+                String query = "DELETE FROM planes WHERE id=" + id;
                 Connection con = DriverManager.getConnection(url, userName, passWord);
                 PreparedStatement st = con.prepareStatement(query);
 
@@ -256,7 +271,7 @@ public class plane extends HttpServlet {
                 st.close();
                 con.close();
 
-                RequestDispatcher rd = request.getRequestDispatcher("featuresServlet?action=VIEW");
+                RequestDispatcher rd = request.getRequestDispatcher("planes?action=VIEW");
                 rd.forward(request, response);
             }
 
