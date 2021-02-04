@@ -173,7 +173,7 @@ public class bookingServlet extends HttpServlet {
                     request.setAttribute("list", list);
                     sendPage(request, response, "/viewSeat.jsp");
                             
-                 } else if (action.equals("VIEWDetail")) {
+                 } else if (action.equals("VIEWDETAIL")) {
                     
                     String query = "SELECT * FROM schedule WHERE departureDate BETWEEN CURDATE() and '2021-12-12' AND approve=1";                              
                     Connection con = DriverManager.getConnection(url, userName, passWord);
