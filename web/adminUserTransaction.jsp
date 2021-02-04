@@ -39,39 +39,29 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
                 <div class="container-fluid">
-
-                    <div class="dropdown float-right my-5 mr-5  ">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            USER
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </div>
-                    </div>
                     <!--Table-->
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Departure-Arrival</th>      
-                                <th scope="col">Departure Date</th>
-                                <th scope="col">Departure Time</th>
-                                <th scope="col">Arrival Time</th>
-                                <th scope="col">Booked On</th>
-                                <th scope="col">Seat Type</th>      
+                                <th scope="col">No</th>      
+                                <th scope="col">Number of Passengers</th>
+                                <th scope="col">Additional Baggage(KG)</th>
+                                <th scope="col">Seat Category</th>
+                                <th scope="col">Booked On</th>  
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody> 
                             <c:forEach items="${list}" var="booking" varStatus="loop">
                                 <tr>      
 
-                                    <td><c:out value="${schedule.destination_arrival}" /></td>
-                                    <td><c:out value="${schedule.departureDate}" /></td> 
-                                    <td><c:out value="${schedule.departureTime}" /></td> 
-                                    <td><c:out value="${schedule.arrivalTime}" /></td>
-                                    <td><c:out value="${booking.booking}"/></td>
-                                    <td><a href="bookingServlet?action=VIEWSEATCAT"<c:out value="${booking.seatCat}" /></td>
+                                    <td><c:out value="${booking.id}" /></td>
+                                    <td><c:out value="${booking.numofpas}" /></td> 
+                                    <td><c:out value="${booking.baggage}" /></td> 
+                                    <td><a href="bookingServlet?action=VIEWSEATCAT"<c:out value="${booking.seatCat}"/></a></td>
+                                    <td><c:out value="${booking.booking}"/></td> 
+                                    <td><a href="bookingServlet?action=VIEWDetail">View Details</a></td>
                                 </tr>
-
                             </c:forEach>
                         </tbody>
                     </table>
