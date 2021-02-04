@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -205,7 +206,33 @@ public class bookingServlet extends HttpServlet {
                     request.setAttribute("list", list);
                     sendPage(request, response, "/viewDetail.jsp");   
                 
-                 } 
+                 } else if (action.equals("BOOK")){
+                
+                        String query = "INSERT INTO booking(numofpas, baggage, seatCat) VALUES(?,?, ?)";
+                        Connection con = DriverManager.getConnection(url, userName, passWord);
+                        PreparedStatement st= con.prepareStatement(query);
+                        
+                        int numofpas = Integer.parseInt(request.getParameter("numofpas"));
+                        int baggage= Integer.parseInt(request.getParameter("baggage"));
+                        String seatCat = request.getParameter("seatCat");
+                        
+        
+                        st.setInt(1,numofpas);
+                        st.setInt(2,baggage);
+                        st.setString(3,seatCat);
+                        
+                        
+                        int insertStatus=0; 
+                        st.executeUpdate();
+        
+                        System.out.println(insertStatus + "row affected");
+        
+                        st.close(); 
+                        con.close();
+                        
+                         RequestDispatcher rd = request.getRequestDispatcher("bookingServlet?action=VIEWBOOKING");
+                         rd.forward(request,response);
+                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
