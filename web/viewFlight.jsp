@@ -39,9 +39,7 @@
                <h3>List Of Flights</h3>
                <br></br>   
             
-                     <div>
-        <a class="button" href="SearchFlight.jsp">Search for Flights?</a>
-  </div>
+     
      <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container-fluid">
@@ -76,7 +74,7 @@
       <td><c:out value="${schedule.departureTime}" /></td> 
       <td><c:out value="${schedule.arrivalTime}" /></td>   
       <td>RM <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${schedule.price}" /></td>
-      <td> <a href="bookingServlet?action=VIEWBOOKING">Book</a> </td>
+      <td> <a href="checkout.jsp">Book</a> </td>
     </tr>
      </c:forEach>
   </tbody>

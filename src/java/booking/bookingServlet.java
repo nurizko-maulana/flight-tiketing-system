@@ -206,20 +206,29 @@ public class bookingServlet extends HttpServlet {
                     request.setAttribute("list", list);
                     sendPage(request, response, "/viewDetail.jsp");   
                 
-                 } else if (action.equals("BOOK")){
+                 } else if (action.equals("CHECKOUT")){
                 
-                        String query = "INSERT INTO booking(numofpas, baggage, seatCat) VALUES(?,?, ?)";
+                        String query = "INSERT INTO booking(numofpas, baggage, seatCat, nameofpay, nameofpay, cardnum, expiry, cvv) VALUES(?,?,?,?,?,?,?,?)";
                         Connection con = DriverManager.getConnection(url, userName, passWord);
                         PreparedStatement st= con.prepareStatement(query);
                         
                         int numofpas = Integer.parseInt(request.getParameter("numofpas"));
                         int baggage= Integer.parseInt(request.getParameter("baggage"));
                         String seatCat = request.getParameter("seatCat");
-                        
+                        String nameofpay = request.getParameter("nameofpay");
+                        String cardnum = request.getParameter("cardnum");
+                        String expiry = request.getParameter("expiry");
+                        String cvv = request.getParameter("cvv");
         
+                        
                         st.setInt(1,numofpas);
                         st.setInt(2,baggage);
                         st.setString(3,seatCat);
+                        st.setString(5,nameofpay);
+                         st.setString(6,cardnum);
+                          st.setString(7,expiry);
+                           st.setString(8,cvv);
+                         
                         
                         
                         int insertStatus=0; 
