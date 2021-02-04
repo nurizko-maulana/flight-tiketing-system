@@ -68,7 +68,7 @@
       <td><c:out value="${booking.id}" /></td>
       <td><c:out value="${booking.numofpas}" /></td> 
       <td><c:out value="${booking.baggage}" /></td> 
-      <td><a href="bookingServlet?action=VIEWSEATCAT"<c:out value="${booking.seatCat}"/></a></td>
+      <td><c:out value="${booking.seatCat}"/></td>
       <td><c:out value="${booking.booking}"/></td> 
       <td><a href="bookingServlet?action=VIEWDetail">View Details</a></td>
       </tr>
